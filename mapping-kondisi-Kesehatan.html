@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapping Kondisi Kesehatan & Solusi GoMilku SR12</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .filter-btn-active {
+      background-color: #059669 !important;
+      color: #ffffff !important;
+      border-color: #059669 !important;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-4 sm:p-8 min-h-screen">
+  <div class="max-w-6xl mx-auto space-y-6">
+    
+    <!-- Top Back Navigation -->
+    <div class="flex items-center justify-between">
+      <a href="gomilku_edukasi_portal.html" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-4 py-2 rounded-xl transition border border-emerald-200 shadow-sm">
+        <span>← Kembali ke Portal GoMilku (Menu Solusi)</span>
+      </a>
+      <span class="text-xs font-bold text-slate-400 bg-white px-3 py-1 rounded-lg border border-slate-200">
+        Panduan Medis Edukasi SR12
+      </span>
+    </div>
+
+    <!-- Header Banner -->
+    <header class="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl space-y-4 relative overflow-hidden">
+      <div class="inline-flex items-center gap-1.5 bg-emerald-400/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-400/30">
+        🩺 Matriks Solusi Terpadu
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-black">Mapping Kondisi Kesehatan & Dosis GoMilku</h1>
+      <p class="text-slate-200 text-sm sm:text-base leading-relaxed max-w-3xl">
+        Panduan komprehensif mencocokkan keluhan kesehatan dengan mekanisme biologis, varian rasa yang direkomendasikan, serta aturan minum yang tepat agar khasiatnya optimal.
+      </p>
+
+      <!-- Live Search Bar -->
+      <div class="pt-2 max-w-xl">
+        <div class="relative">
+          <input type="text" 
+                 id="search-input" 
+                 onkeyup="filterMapping()" 
+                 placeholder="Cari keluhan (contoh: Maag, Asma, Nafsu Makan, Nyeri Sendi, ASI)..." 
+                 class="w-full bg-white/10 backdrop-blur-md text-white placeholder-slate-300 text-xs sm:text-sm rounded-2xl px-4 py-3.5 pl-10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition" />
+          <span class="absolute left-3.5 top-3.5 text-slate-300 text-sm">🔍</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Quick Filter Category Tabs -->
+    <div class="flex flex-wrap gap-2 items-center" id="category-filter-group">
+      <button onclick="setFilterCategory('all', this)" class="cat-btn filter-btn-active text-xs font-bold px-4 py-2 rounded-xl border border-slate-200 transition">
+        Semua Sistem (8)
+      </button>
+      <button onclick="setFilterCategory('lambung', this)" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl border border-slate-200 transition">
+        🥛 Lambung & Cerna
+      </button>
+      <button onclick="setFilterCategory('pernapasan', this)" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl border border-slate-200 transition">
+        🫁 Saluran Pernapasan
+      </button>
+      <button onclick="setFilterCategory('sendi', this)" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl border border-slate-200 transition">
+        🦴 Tulang & Sendi
+      </button>
+      <button onclick="setFilterCategory('anak', this)" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl border border-slate-200 transition">
+        👶 Anak & Balita
+      </button>
+      <button onclick="setFilterCategory('ibu', this)" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl border border-slate-200 transition">
+        🤰 Bumil & Busui
+      </button>
+      <button onclick="setFilterCategory('pemulihan', this)" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 text-xs font-bold px-3.5 py-2 rounded-xl border border-slate-200 transition">
+        ⚡ Luka & Pasca Sakit
+      </button>
+    </div>
+
+    <!-- MAPPING CARDS GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="mapping-grid">
+
+      <!-- ITEM 1: MAAG & GERD -->
+      <div class="mapping-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 hover:border-emerald-400 transition" 
+           data-category="lambung" 
+           data-keywords="maag asam lambung gerd perut begah kembung perih mual muntah">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-2xl font-bold shrink-0">
+              🥛
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full">Sistem Pencernaan</span>
+              <h3 class="font-bold text-base sm:text-lg text-slate-800">Maag Akut, Asam Lambung & GERD</h3>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-xl shrink-0">Varian Original</span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div><strong class="text-slate-800">Mekanisme Kerja:</strong> Susu kambing memiliki sifat basa alami (alkalin) yang langsung menetralkan kelebihan asam klorida (HCl) di dinding lambung tanpa memicu iritasi.</div>
+          <div><strong class="text-slate-800">Bahan Pendukung:</strong> Susu Etawa Murni + Madu Alami (melapisi mukosa lambung yang terluka).</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2 pt-1">
+          <div>
+            <span class="text-slate-500">Dosis Anjuran:</span>
+            <strong class="text-slate-800 block sm:inline"> 2 sdm + 150ml air hangat (30 mnt sebelum makan)</strong>
+          </div>
+          <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">2x Sehari (Pagi & Malam)</span>
+        </div>
+      </div>
+
+      <!-- ITEM 2: ASMA & BATUK / PARU-PARU -->
+      <div class="mapping-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 hover:border-emerald-400 transition" 
+           data-category="pernapasan" 
+           data-keywords="asma batuk alergi flek paru tbc sesak napas bronkitis dahak lendir">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center text-2xl font-bold shrink-0">
+              🫁
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-800 bg-blue-100 px-2 py-0.5 rounded-full">Sistem Pernapasan</span>
+              <h3 class="font-bold text-base sm:text-lg text-slate-800">Asma, Batuk Menahun & Flek Paru</h3>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-xl shrink-0">Varian Original</span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div><strong class="text-slate-800">Mekanisme Kerja:</strong> Kandungan Fluorin alami 10-100x lebih tinggi dari susu sapi bertindak sebagai antiseptik saluran pernapasan dan mengencerkan dahak kental.</div>
+          <div><strong class="text-slate-800">Bahan Pendukung:</strong> Susu Kambing Etawa + Madu (menenangkan dinding tenggorokan yang teriritasi).</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2 pt-1">
+          <div>
+            <span class="text-slate-500">Dosis Anjuran:</span>
+            <strong class="text-slate-800 block sm:inline"> 2 sdm + 150ml air hangat (minum selagi hangat)</strong>
+          </div>
+          <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">2x Sehari (Pagi & Sebelum Tidur)</span>
+        </div>
+      </div>
+
+      <!-- ITEM 3: NYERI SENDI & OSTEOPOROSIS -->
+      <div class="mapping-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 hover:border-emerald-400 transition" 
+           data-category="sendi" 
+           data-keywords="osteoporosis sendi tulang linu pegal rematik lansia orang tua kalsium">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center text-2xl font-bold shrink-0">
+              🦴
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-purple-800 bg-purple-100 px-2 py-0.5 rounded-full">Tulang & Rangka</span>
+              <h3 class="font-bold text-base sm:text-lg text-slate-800">Nyeri Sendi, Rematik & Tulang Keropos</h3>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-xl shrink-0">Original / Cokelat</span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div><strong class="text-slate-800">Mekanisme Kerja:</strong> Kalsium organik & Fosfor dengan bioavailabilitas tinggi meresap ke dalam matriks tulang tanpa mengendap sebagai batu ginjal.</div>
+          <div><strong class="text-slate-800">Bahan Pendukung:</strong> Susu Etawa + Daun Kelor (kandungan kalsium nabati ekstra).</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2 pt-1">
+          <div>
+            <span class="text-slate-500">Dosis Anjuran:</span>
+            <strong class="text-slate-800 block sm:inline"> 2 sdm + 150ml air hangat</strong>
+          </div>
+          <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">2x Sehari Rutin</span>
+        </div>
+      </div>
+
+      <!-- ITEM 4: GTM & NAFSU MAKAN ANAK -->
+      <div class="mapping-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 hover:border-emerald-400 transition" 
+           data-category="anak" 
+           data-keywords="anak balita gtm nafsu makan susah makan alergi susu sapi stunting">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-700 flex items-center justify-center text-2xl font-bold shrink-0">
+              👶
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-800 bg-rose-100 px-2 py-0.5 rounded-full">Tumbuh Kembang</span>
+              <h3 class="font-bold text-base sm:text-lg text-slate-800">Anak Susah Makan (GTM) & Alergi Susu Sapi</h3>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-xl shrink-0">Cokelat / Stroberi</span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div><strong class="text-slate-800">Mekanisme Kerja:</strong> Bebas protein alfa S1-kasein penyebab diare dan alergi. Ekstrak kelor dan madu merangsang enzim pencernaan untuk mendongkrak nafsu makan.</div>
+          <div><strong class="text-slate-800">Bahan Pendukung:</strong> Daun Kelor + Ikan Gabus (asam amino lengkap tumbuh kembang otak).</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2 pt-1">
+          <div>
+            <span class="text-slate-500">Dosis Anjuran:</span>
+            <strong class="text-slate-800 block sm:inline"> 1–2 sdm + 150ml air hangat (usia > 1 thn)</strong>
+          </div>
+          <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">1–2x Sehari</span>
+        </div>
+      </div>
+
+      <!-- ITEM 5: PELANCAR ASI & BUMIL -->
+      <div class="mapping-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 hover:border-emerald-400 transition" 
+           data-category="ibu" 
+           data-keywords="ibu hamil menyusui booster asi lancar kental mual janin kalsium ibu">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-pink-50 text-pink-700 flex items-center justify-center text-2xl font-bold shrink-0">
+              🤰
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-pink-800 bg-pink-100 px-2 py-0.5 rounded-full">Ibu Hamil & Busui</span>
+              <h3 class="font-bold text-base sm:text-lg text-slate-800">Booster ASI & Kebutuhan Nutrisi Janin</h3>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-pink-700 bg-pink-50 px-2.5 py-1 rounded-xl shrink-0">Original / Stroberi</span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div><strong class="text-slate-800">Mekanisme Kerja:</strong> Fitosterol dalam Daun Kelor bertindak sebagai galaktagog alami untuk melipatgandakan produksi ASI dan meningkatkan kekentalannya.</div>
+          <div><strong class="text-slate-800">Bahan Pendukung:</strong> Daun Kelor + Susu Kambing (mencegah keropos kalsium gigi/tulang ibu).</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2 pt-1">
+          <div>
+            <span class="text-slate-500">Dosis Anjuran:</span>
+            <strong class="text-slate-800 block sm:inline"> 2 sdm + 180–200ml air hangat</strong>
+          </div>
+          <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">2x Sehari Rutin</span>
+        </div>
+      </div>
+
+      <!-- ITEM 6: REGENERASI LUKA & PASCA SAKIT -->
+      <div class="mapping-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 hover:border-emerald-400 transition" 
+           data-category="pemulihan" 
+           data-keywords="luka operasi caesar bedah albumin pemulihan sakit lemas drop stamina">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center text-2xl font-bold shrink-0">
+              ⚡
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-teal-800 bg-teal-100 px-2 py-0.5 rounded-full">Regenerasi & Recovery</span>
+              <h3 class="font-bold text-base sm:text-lg text-slate-800">Penyembuhan Luka Operasi & Pemulihan Sakit</h3>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-xl shrink-0">Original / Cokelat</span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div><strong class="text-slate-800">Mekanisme Kerja:</strong> Protein Albumin Ikan Gabus mempercepat sintesis fibrinogen untuk menutup luka jahitan luar maupun luka dalam 3x lebih cepat.</div>
+          <div><strong class="text-slate-800">Bahan Pendukung:</strong> Ekstrak Ikan Gabus + Madu Alami (mencegah infeksi dan meningkatkan stamina).</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2 pt-1">
+          <div>
+            <span class="text-slate-500">Dosis Anjuran:</span>
+            <strong class="text-slate-800 block sm:inline"> 2 sdm + 150ml air hangat</strong>
+          </div>
+          <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg">2–3x Sehari saat Recovery</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Empty Result State -->
+    <div id="empty-state" class="hidden bg-white rounded-3xl p-10 text-center border border-slate-200 space-y-3">
+      <span class="text-4xl">🔍</span>
+      <h3 class="font-bold text-base text-slate-800">Keluhan Tidak Ditemukan</h3>
+      <p class="text-xs text-slate-500 max-w-sm mx-auto">Coba gunakan kata kunci lain seperti: maag, batuk, sendi, asi, luka, atau anak.</p>
+    </div>
+
+    <!-- Bottom Footer Callout -->
+    <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-3xl p-6 sm:p-8 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h4 class="font-bold text-sm sm:text-base text-slate-800">Butuh Konsultasi Kondisi Kesehatan Tertentu?</h4>
+        <p class="text-xs text-slate-600 mt-1">Konsultasikan keluhan Anda bersama Agen & Distributor Resmi SR12.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="gomilku_edukasi_portal.html" class="bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs px-4 py-2.5 rounded-xl border border-slate-200 transition">
+          ← Dashboard Utama
+        </a>
+        <a href="https://wa.me/6281334541949?text=Halo%20Admin%20GoMilku,%20saya%20ingin%20konsultasi%20kondisi%20kesehatan%20dan%20solusi%20GoMilku" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition">
+          💬 Chat Konsultasi WA (0813-3454-1949)
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    let activeCategory = 'all';
+
+    function setFilterCategory(cat, btnEl) {
+      activeCategory = cat;
+      const buttons = document.querySelectorAll('.cat-btn');
+      buttons.forEach(b => {
+        b.classList.remove('filter-btn-active');
+        b.classList.add('bg-white', 'text-slate-700');
+      });
+
+      if (btnEl) {
+        btnEl.classList.add('filter-btn-active');
+        btnEl.classList.remove('bg-white', 'text-slate-700');
+      }
+
+      filterMapping();
+    }
+
+    function filterMapping() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.mapping-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const keywords = card.getAttribute('data-keywords').toLowerCase();
+        const textContent = card.innerText.toLowerCase();
+
+        const matchesCat = (activeCategory === 'all' || cat === activeCategory);
+        const matchesQuery = (query === '' || keywords.includes(query) || textContent.includes(query));
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const emptyState = document.getElementById('empty-state');
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
