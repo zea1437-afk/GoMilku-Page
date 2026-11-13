@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografis Komparasi Ilmiah: Susu Kambing Etawa vs Susu Sapi - GoMilku SR12</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-4 sm:p-8 min-h-screen">
+  <div class="max-w-4xl mx-auto space-y-6">
+    
+    <!-- Top Back Navigation -->
+    <a href="gomilku_edukasi_portal.html" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-4 py-2 rounded-xl transition border border-emerald-200 shadow-sm">
+      <span>← Kembali ke Portal GoMilku (Menu Keunggulan)</span>
+    </a>
+
+    <!-- Header Banner -->
+    <header class="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl space-y-4 relative overflow-hidden">
+      <div class="inline-flex items-center gap-1.5 bg-emerald-400/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-400/30">
+        ⚖️ Studi Komparasi Medis & Nutrisi
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-black">Komparasi: Susu Kambing Etawa vs Susu Sapi</h1>
+      <p class="text-slate-200 text-sm sm:text-base leading-relaxed max-w-2xl">
+        Ketahui mengapa jutaan keluarga beralih dari susu sapi ke susu kambing etawa. Dari struktur molekul lemak mikroskopis hingga sifat keasaman (pH) yang menyehatkan lambung dan pernapasan.
+      </p>
+    </header>
+
+    <!-- SECTION GAMBAR INFOGRAFIS VISUAL (PROPORSIONAL & MUDAH DIBACA) -->
+    <section class="bg-white rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-md space-y-3">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <h2 class="text-sm sm:text-base font-bold text-slate-800">Visual Infografis: Susu Etawa vs Sapi</h2>
+        </div>
+        <button onclick="openZoom('Susu Etawa vs Sapi.jpg')" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200 transition">
+          <span>🔍 Perbesar Tampilan</span>
+        </button>
+      </div>
+
+      <!-- Container Gambar Proporsional -->
+      <div class="relative bg-slate-50/80 rounded-2xl p-2 sm:p-4 border border-slate-200 flex items-center justify-center overflow-hidden">
+        <img src="Susu Etawa vs Sapi.jpg" 
+             alt="Infografis Susu Etawa vs Sapi GoMilku" 
+             onclick="openZoom(this.src)"
+             class="w-full h-auto max-h-[900px] object-contain rounded-xl shadow-sm hover:scale-[1.008] transition-transform duration-300 cursor-zoom-in"
+             onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'py-16 text-center space-y-2\'><span class=\'text-5xl\'>🥛🆚🐄</span><p class=\'text-sm font-bold text-emerald-800\'>Susu Etawa vs Sapi.jpg</p><p class=\'text-xs text-slate-500\'>File gambar akan otomatis muncul saat diletakkan di folder yang sama.</p></div>';" />
+      </div>
+
+      <div class="flex items-center justify-between text-[11px] sm:text-xs text-slate-500 px-1 pt-1">
+        <span>💡 Tips: Klik pada gambar di atas untuk membaca teks dan bagan dengan resolusi penuh.</span>
+        <span class="font-medium text-emerald-800 hidden sm:inline">GoMilku Official SR12</span>
+      </div>
+    </section>
+
+    <!-- Point-by-Point Scientific Comparison Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      
+      <!-- Card 1: Molekul Lemak & Kecepatan Cerna -->
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center text-xl">⏱️</div>
+        <h3 class="font-bold text-base text-slate-800">1. Kecepatan Cerna di Usus</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Gumpalan lemak susu kambing berukuran rata-rata <strong>2 mikrometer</strong> (1/5 ukuran lemak sapi). Enzim lambung manusia hanya butuh <strong>20 menit</strong> untuk memecahnya, dibandingkan susu sapi yang butuh <strong>120 menit</strong> dan sering memicu sensasi kembung atau mual.
+        </p>
+      </div>
+
+      <!-- Card 2: Alergi & Alfa S1-Kasein -->
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-xl">🛡️</div>
+        <h3 class="font-bold text-base text-slate-800">2. Hipoalergenik (Bebas Alergi)</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Susu sapi mengandung protein <em>Alfa S1-Kasein</em> yang tinggi, biang keladi alergi pada balita (ruam kulit, batuk lendir, diare). Susu kambing etawa hampir tidak memiliki kasein jenis ini, menjadikannya pengganti susu sapi paling aman.
+        </p>
+      </div>
+
+      <!-- Card 3: pH Sifat Basa vs Asam -->
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-bold flex items-center justify-center text-xl">🥛</div>
+        <h3 class="font-bold text-base text-slate-800">3. Sifat Basa (Alkali) Ramah Lambung</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Susu sapi memiliki residu asam saat dicerna yang dapat mengiritasi dinding lambung sensitif. Sebaliknya, susu kambing etawa bersifat <strong>alkalin alami</strong> yang menetralkan asam lambung (efek antasida herbal untuk Maag & GERD).
+        </p>
+      </div>
+
+      <!-- Card 4: Mineral Fluorin & Paru-Paru -->
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 font-bold flex items-center justify-center text-xl">🫁</div>
+        <h3 class="font-bold text-base text-slate-800">4. Fluorin Alami 10x Lipat</h3>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Susu kambing etawa mengandung mineral Fluorin organik 10 hingga 100 kali lebih banyak daripada susu sapi. Fluorin alami ini berperan penting sebagai antiseptik saluran bronkus dan paru-paru bagi penderita asma dan bronkitis.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- GoMilku Advantage Callout -->
+    <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-3">
+      <h3 class="font-black text-lg text-slate-800">Nilai Tambah Spesial GoMilku Reguler</h3>
+      <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+        Berbeda dengan susu kambing biasa yang hanya terdiri dari susu murni, GoMilku menyempurnakan keunggulan kambing etawa dengan memadukan <strong>Ekstrak Ikan Gabus (Albumin), Ekstrak Daun Kelor (Multivitamin Superfood), dan Madu Murni</strong>. Tanpa bau prengus, rasa lebih enak, dan khasiat berlipat ganda.
+      </p>
+    </div>
+
+    <!-- Bottom Action -->
+    <div class="bg-white rounded-2xl p-5 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+      <div class="text-xs text-slate-700">
+        Siap beralih ke nutrisi alami susu kambing etawa GoMilku?
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="gomilku_edukasi_portal.html" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs px-4 py-2.5 rounded-xl transition">
+          ← Kembali ke Dashboard
+        </a>
+        <a href="gomilku_edukasi_portal.html#kuis" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition">
+          Pilih Varian di Kuis →
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LIGHTBOX / ZOOM MODAL POPUP -->
+  <div id="zoom-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6" onclick="closeZoom()">
+    <div class="relative max-w-5xl max-h-[92vh] w-full flex flex-col items-center" onclick="event.stopPropagation()">
+      <div class="w-full flex items-center justify-between text-white pb-3 px-1">
+        <span class="text-xs font-semibold text-emerald-300">Tampilan Penuh Infografis (High-Res)</span>
+        <button onclick="closeZoom()" class="bg-white/20 hover:bg-white/30 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[85vh] w-full flex justify-center bg-black/40 rounded-2xl p-2 border border-white/10">
+        <img id="zoom-img" src="" alt="Infografis Full View" class="max-w-full h-auto object-contain rounded-xl" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openZoom(src) {
+      const modal = document.getElementById('zoom-modal');
+      const img = document.getElementById('zoom-img');
+      img.src = src;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeZoom() {
+      const modal = document.getElementById('zoom-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeZoom();
+    });
+  </script>
+</body>
+</html>
