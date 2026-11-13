@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library & Katalog Testimoni GoMilku SR12 - Navigasi Vertikal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --primary-light: #eff6ff;
+      --primary-accent: #0284c7;
+      --sidebar-bg: #0b1329;
+      --sidebar-hover: #162244;
+      --sidebar-active: #2563eb;
+      --sidebar-text: #e2e8f0;
+      --sidebar-muted: #94a3b8;
+      --text: #334155;
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 16px 32px -4px rgba(29, 78, 216, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* TOP BAR */
+    .top-navbar {
+      background: #070d1e;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #2563eb;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .brand-title span {
+      color: #60a5fa;
+    }
+
+    .top-meta {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: #1e293b;
+      color: #93c5fd;
+      border: 1px solid #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* MAIN APP LAYOUT (SIDEBAR + CONTENT) */
+    .app-container {
+      display: flex;
+      flex: 1;
+      max-width: 1560px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* VERTICAL SIDEBAR NAVIGATION */
+    .vertical-sidebar {
+      width: 325px;
+      flex-shrink: 0;
+      background: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      border-right: 1px solid #162244;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 57px;
+      height: calc(100vh - 57px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #1e3a8a #0b1329;
+      z-index: 80;
+    }
+
+    .sidebar-header {
+      padding: 20px 18px 12px;
+      border-bottom: 1px solid #162244;
+    }
+
+    .sidebar-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-subtitle {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .category-vertical-menu {
+      padding: 12px 10px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .cat-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      color: #cbd5e1;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      text-align: left;
+      width: 100%;
+    }
+
+    .cat-nav-item:hover {
+      background: var(--sidebar-hover);
+      color: #ffffff;
+      border-color: #1e3a8a;
+      transform: translateX(3px);
+    }
+
+    .cat-nav-item.active {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(29, 78, 216, 0.4));
+      color: #93c5fd;
+      border-color: #2563eb;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+
+    .cat-nav-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 15%;
+      height: 70%;
+      width: 4px;
+      background: #38bdf8;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .nav-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      width: 26px;
+      text-align: center;
+    }
+
+    .nav-text-group {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .nav-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-desc {
+      font-size: 0.72rem;
+      color: #64748b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cat-nav-item:hover .nav-desc,
+    .cat-nav-item.active .nav-desc {
+      color: #94a3b8;
+    }
+
+    .nav-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #111e3b;
+      color: #94a3b8;
+      padding: 3px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      border: 1px solid #1e3a8a;
+    }
+
+    .cat-nav-item.active .nav-badge {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #60a5fa;
+    }
+
+    /* RIGHT CONTENT AREA */
+    .content-area {
+      flex: 1;
+      padding: 24px 32px 60px;
+      overflow-y: auto;
+      background-color: var(--bg);
+    }
+
+    /* CONTENT HEADER & SEARCH */
+    .content-header {
+      background: #ffffff;
+      padding: 20px 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+
+    .header-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .active-cat-info h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .active-cat-info p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .search-box-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 16px 10px 40px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background-color: #f8fafc;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: #2563eb;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.95rem;
+      color: #94a3b8;
+    }
+
+    /* FILTER PILLS / TARGET AUDIENCE */
+    .filter-pills-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #f1f5f9;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .filter-pills-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+
+    .pill-btn {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pill-btn:hover {
+      background: #e2e8f0;
+      color: var(--text-dark);
+    }
+
+    .pill-btn.active {
+      background: #1e3a8a;
+      color: #ffffff;
+      border-color: #1e3a8a;
+      box-shadow: 0 2px 6px rgba(30, 58, 138, 0.25);
+    }
+
+    /* STATS STRIP */
+    .catalog-stats-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding: 0 4px;
+    }
+
+    .result-count {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .result-count strong {
+      color: var(--text-dark);
+    }
+
+    /* CATALOG GRID */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 22px;
+    }
+
+    /* CARD DESIGN */
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: #60a5fa;
+    }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background: #f1f5f9;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f8fafc;
+      transition: transform 0.3s ease;
+    }
+
+    .card-img-wrap:hover .card-img {
+      transform: scale(1.03);
+    }
+
+    .zoom-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(11, 19, 41, 0.78);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .cat-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Specific Tag Colors */
+    .tag-pernapasan { background: #e0f2fe; color: #0369a1; }
+    .tag-anak { background: #ecfdf5; color: #047857; }
+    .tag-lambung { background: #fef3c7; color: #92400e; }
+    .tag-tulang { background: #ede9fe; color: #6d28d9; }
+    .tag-degeneratif { background: #fee2e2; color: #b91c1c; }
+    .tag-jantung { background: #ffe4e6; color: #be123c; }
+    .tag-benjolan { background: #fce7f3; color: #9d174d; }
+    .tag-promil { background: #fdf2f8; color: #be185d; }
+    .tag-kewanitaan { background: #fae8ff; color: #86198f; }
+    .tag-busui { background: #f0fdf4; color: #15803d; }
+    .tag-kulit { background: #fff1f2; color: #e11d48; }
+    .tag-stamina { background: #fef9c3; color: #854d0e; }
+    .tag-rasa { background: #f1f5f9; color: #334155; }
+
+    .file-tag {
+      font-family: monospace;
+      font-size: 0.7rem;
+      background: #f1f5f9;
+      color: #64748b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .card-khasiat {
+      font-size: 0.85rem;
+      background-color: #eff6ff;
+      border-left: 3px solid #2563eb;
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .card-chat {
+      font-size: 0.83rem;
+      color: #475569;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      border: 1px dashed #cbd5e1;
+      font-style: italic;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    .card-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-dark);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px dashed #cbd5e1;
+    }
+
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      color: #94a3b8;
+    }
+
+    .empty-state h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .empty-state p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* MODAL LIGHTBOX */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 19, 41, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      width: 100%;
+      max-width: 900px;
+      max-height: 92vh;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+
+    .modal-header {
+      padding: 14px 20px;
+      background: #070d1e;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #162244;
+    }
+
+    .modal-header-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #93c5fd;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.15s ease;
+    }
+
+    .modal-close-btn:hover {
+      color: #ffffff;
+    }
+
+    .modal-body {
+      display: flex;
+      flex-direction: row;
+      max-height: calc(92vh - 60px);
+      overflow-y: auto;
+    }
+
+    .modal-img-container {
+      flex: 1.2;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+      min-height: 380px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .modal-info-panel {
+      flex: 1;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: #ffffff;
+      overflow-y: auto;
+    }
+
+    .modal-nav-btns {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+      pointer-events: none;
+    }
+
+    .modal-arrow-btn {
+      background: rgba(15, 23, 42, 0.7);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      transition: all 0.2s ease;
+    }
+
+    .modal-arrow-btn:hover {
+      background: #2563eb;
+      border-color: #60a5fa;
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #070d1e;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-left: 4px solid #10b981;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .mobile-menu-toggle {
+        display: inline-flex;
+      }
+      .vertical-sidebar {
+        position: fixed;
+        top: 57px;
+        left: -330px;
+        height: calc(100vh - 57px);
+        transition: left 0.3s ease;
+        box-shadow: 10px 0 25px rgba(0,0,0,0.3);
+      }
+      .vertical-sidebar.open {
+        left: 0;
+      }
+      .content-area {
+        padding: 16px;
+      }
+      .modal-body {
+        flex-direction: column;
+      }
+      .modal-img-container {
+        min-height: 280px;
+        max-height: 50vh;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .catalog-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-btns {
+        grid-template-columns: 1fr;
+      }
+      .brand-title {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-navbar">
+    <div class="brand-group">
+      <button class="mobile-menu-toggle" id="mobileToggle" onclick="toggleSidebar()">
+        <span>☰</span> Kategori
+      </button>
+      <div class="brand-badge">SR12 Herbal</div>
+      <div class="brand-title">Library Testimoni <span>GoMilku Reguler</span></div>
+    </div>
+    <div class="top-meta">
+      <a href="gomilku_edukasi_portal.html" style="color:#ffffff; background:#10b981; padding:6px 14px; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.8rem; display:inline-flex; align-items:center; gap:6px; transition: background 0.2s;">
+        ← Portal Edukasi
+      </a>
+      <span class="top-badge-verified">✓ 37 Testimoni Terverifikasi</span>
+      <span style="display:none; @media(min-width:768px){display:inline;}">Portal Edukasi & Marketing</span>
+    </div>
+  </header>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- VERTICAL SIDEBAR NAVIGATION -->
+    <aside class="vertical-sidebar" id="verticalSidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-label">
+          <span>DIREKTORI KELUHAN</span>
+          <span style="color:#60a5fa; font-size:0.75rem;">11 KATEGORI</span>
+        </div>
+        <p class="sidebar-subtitle">Pilih kategori sakit/pengalaman di bawah:</p>
+      </div>
+
+      <nav class="category-vertical-menu" id="verticalCategoryMenu">
+        <!-- Vertical Menu Items -->
+        <button class="cat-nav-item active" data-cat="all">
+          <div class="nav-left">
+            <span class="nav-icon">🌐</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Semua Testimoni</span>
+              <span class="nav-desc">Seluruh keluhan & khasiat</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-all">37</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="pernapasan">
+          <div class="nav-left">
+            <span class="nav-icon">🫁</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Paru-Paru & Saluran Nafas</span>
+              <span class="nav-desc">Flek, paru basah, batuk darah, asma</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-pernapasan">7</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="anak">
+          <div class="nav-left">
+            <span class="nav-icon">👶</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Kesehatan & Nafsu Makan Anak</span>
+              <span class="nav-desc">BB naik 2+ kg, bebas uap, imun kuat</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-anak">7</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="lambung">
+          <div class="nav-left">
+            <span class="nav-icon">🫄</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Lambung, GERD & Maag</span>
+              <span class="nav-desc">Nyeri ulu hati, mual sahur puasa</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-lambung">4</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="tulang">
+          <div class="nav-left">
+            <span class="nav-icon">🦴</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Tulang, Sendi & Pegal Linu</span>
+              <span class="nav-desc">Keropos tulang, kesemutan, tidur pulas</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-tulang">5</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="degeneratif">
+          <div class="nav-left">
+            <span class="nav-icon">🩺</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Diabetes, Jantung & Autoimun</span>
+              <span class="nav-desc">Gula 300 normal, gagal jantung, lupus</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-degeneratif">3</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="benjolan">
+          <div class="nav-left">
+            <span class="nav-icon">🔬</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Benjolan & Kelenjar</span>
+              <span class="nav-desc">Benjolan payudara & ketiak mengecil</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-benjolan">2</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="promil">
+          <div class="nav-left">
+            <span class="nav-icon">🌸</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Program Hamil & Kewanitaan</span>
+              <span class="nav-desc">Promil pasca keguguran, haid lancar</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-promil">2</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="busui">
+          <div class="nav-left">
+            <span class="nav-icon">🤱</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Ibu Menyusui & Puasa</span>
+              <span class="nav-desc">Kuat puasa tanpa lemes, ASI lancar</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-busui">2</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="kulit">
+          <div class="nav-left">
+            <span class="nav-icon">✨</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Jerawat, Kulit & Diet</span>
+              <span class="nav-desc">Jerawat sembuh, rambut lebat, turun BB</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-kulit">3</span>
+        </button>
+
+        <button class="cat-nav-item" data-cat="rasa">
+          <div class="nav-left">
+            <span class="nav-icon">🥛</span>
+            <div class="nav-text-group">
+              <span class="nav-title">Rasa Gurih & Bebas Prengus</span>
+              <span class="nav-desc">Endul sari kurma, tidak bau amis/embe</span>
+            </div>
+          </div>
+          <span class="nav-badge" id="count-rasa">4</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- RIGHT CONTENT AREA -->
+    <main class="content-area">
+
+      <!-- CONTENT HEADER -->
+      <section class="content-header">
+        <div class="header-flex">
+          <div class="active-cat-info">
+            <h2 id="activeCategoryTitle">
+              <span>🌐</span> Semua Testimoni GoMilku
+            </h2>
+            <p id="activeCategoryDesc">
+              Menampilkan seluruh koleksi testimoni terverifikasi konsumen SR12 GoMilku Reguler
+            </p>
+          </div>
+
+          <!-- SEARCH BOX -->
+          <div class="search-box-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Cari sakit, keluhan, anak, batuk...">
+          </div>
+        </div>
+
+        <!-- TARGET AUDIENCE & QUICK FILTER PILLS -->
+        <div class="filter-pills-row">
+          <span class="filter-pill-label">Sasaran:</span>
+          <button class="pill-btn active" data-filter="all">Semua</button>
+          <button class="pill-btn" data-filter="anak">Anak & Balita</button>
+          <button class="pill-btn" data-filter="busui">Ibu Menyusui (Busui)</button>
+          <button class="pill-btn" data-filter="dewasa">Dewasa</button>
+          <button class="pill-btn" data-filter="lansia">Lansia & Orang Tua</button>
+          <button class="pill-btn" data-filter="puasa">Ibadah Puasa / Sahur</button>
+        </div>
+      </section>
+
+      <!-- STATS STRIP -->
+      <div class="catalog-stats-strip">
+        <div class="result-count" id="resultCount">
+          Menampilkan <strong>37</strong> testimoni
+        </div>
+        <div style="font-size:0.8rem; color:#64748b;">
+          💡 <em>Klik kartu untuk perbesar atau salin materi iklan</em>
+        </div>
+      </div>
+
+      <!-- CATALOG GRID -->
+      <div class="catalog-grid" id="catalogGrid">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+    </main>
+  </div>
+
+  <!-- MODAL LIGHTBOX -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-header-title" id="modalHeaderTitle">Detail Bukti Testimoni</div>
+        <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-img-container">
+          <img src="" alt="Testimoni Bukti" class="modal-img" id="modalImg">
+          <div class="modal-nav-btns">
+            <button class="modal-arrow-btn" onclick="prevModalItem()">&#10094;</button>
+            <button class="modal-arrow-btn" onclick="nextModalItem()">&#10095;</button>
+          </div>
+        </div>
+        <div class="modal-info-panel">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span class="cat-tag" id="modalCatTag">Kategori</span>
+            <span class="file-tag" id="modalFileTag">IMG_...</span>
+          </div>
+          <h3 style="font-size:1.15rem; font-weight:800; color:#0f172a; line-height:1.4;" id="modalTitle">
+            Judul Keluhan
+          </h3>
+          <div>
+            <div style="font-size:0.75rem; font-weight:700; color:#2563eb; text-transform:uppercase; margin-bottom:4px;">
+              Khasiat & Solusi Klinis
+            </div>
+            <p style="font-size:0.88rem; color:#1e3a8a; background:#eff6ff; padding:10px 12px; border-radius:8px; border-left:3px solid #2563eb; line-height:1.5;" id="modalBenefit">
+              Khasiat testimoni
+            </p>
+          </div>
+          <div>
+            <div style="font-size:0.75rem; font-weight:700; color:#64748b; text-transform:uppercase; margin-bottom:4px;">
+              Petikan Obrolan WhatsApp Konsumen
+            </div>
+            <p style="font-size:0.85rem; color:#475569; background:#f8fafc; padding:12px; border-radius:8px; border:1px dashed #cbd5e1; font-style:italic; line-height:1.5;" id="modalQuote">
+              Quote konsumen
+            </p>
+          </div>
+          <div style="margin-top:auto; padding-top:14px; display:flex; gap:10px;">
+            <button class="btn btn-primary" style="flex:1;" onclick="copyCurrentModalText()">
+              📋 Salin Teks Iklan
+            </button>
+            <button class="btn btn-outline" onclick="closeModal()">
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <span>✓</span>
+    <span id="toastMsg">Testimoni berhasil disalin ke clipboard!</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC & DATABASE -->
+  <script>
+    const testimoniData = [
+      {
+        id: 1,
+        file: "IMG_20261026_123806_526.jpg",
+        category: "rasa",
+        categoryName: "Rasa & Tekstur",
+        tagClass: "tag-rasa",
+        audience: ["dewasa", "anak"],
+        title: "Gak Nyangka Kalau GoMilku itu Susu Kambing, Rasanya Gurih & Endul",
+        benefit: "Rasa sangat gurih berpadu sari kurma lezat. Sama sekali tidak ada bau kambing/prengus, mengubah pandangan orang yang sebelumnya underestimate dengan susu kambing.",
+        quote: "Ini beneraaaaan enaaaaakkk susunya rasanya guriihh, sari kurmanya juga endull perpaduan sempurna.... Kenapa aku baru nyoba tadi malem yaaakkk uhuukk. Udah underestimate sama kata susu kambing.",
+        keywords: "rasa enak gurih sari kurma manis alami tidak bau prengus embe kambing lezat"
+      },
+      {
+        id: 2,
+        file: "IMG_20261026_123836_546.jpg",
+        category: "tulang",
+        categoryName: "Tulang & Sendi",
+        tagClass: "tag-tulang",
+        audience: ["lansia", "dewasa"],
+        title: "Pengroposan Tulang Teratasi, Tanpa Gula & Tidur Jadi Nyenyak",
+        benefit: "Mertua yang osteoporosis dan tidak cocok dengan susu komersial lain karena terlalu manis, langsung cocok dengan formula GoMilku tanpa gula tambahan. Badan segar dan tidur berkualitas.",
+        quote: "Awalnya mertua nya kk order keluhannya pengroposan tulang. Biasa beli susu anlene g cocok, etawalin jg kurang cocok krna manis katanya... Pas nyoba SR12 alhamdulillah cocok bgt katanya g manis susunya berasa... enak ke badan seger tidur nyenyak gtu mbak.",
+        keywords: "pengroposan tulang osteoporosis kalsium tanpa gula anlene etawalin tidur nyenyak lansia mertua"
+      },
+      {
+        id: 3,
+        file: "IMG_20261026_123854_103.jpg",
+        category: "rasa",
+        categoryName: "Rasa & Varian Kurma",
+        tagClass: "tag-rasa",
+        audience: ["dewasa", "anak"],
+        title: "Sari Kurma & Susu Kambing Perpaduan Sempurna, Sangat Gurih",
+        benefit: "Kombinasi nutrisi susu kambing murni dan sari kurma asli memberikan cita rasa lezat alami yang disukai tanpa rasa enek.",
+        quote: "Kenapa aku baru nyoba tadi malem yaaakkk uhuukk... Ini beneran enaaaaakkk susunya rasanya gurih, sari kurmanya endul perpaduan sempurna.",
+        keywords: "sari kurma gurih rasa enak manis alami lezat tidak amis"
+      },
+      {
+        id: 4,
+        file: "IMG_20261026_123909_755.jpg",
+        category: "degeneratif",
+        categoryName: "Kesehatan Jantung",
+        tagClass: "tag-jantung",
+        audience: ["dewasa", "lansia"],
+        title: "Bantu Menjaga Kesehatan Jantung, Gagal Jantung Membaik Drastis",
+        benefit: "Ibu konsumen yang didiagnosa dokter mengalami gagal jantung menunjukkan perkembangan kesehatan drastis ke arah sehat bugar setelah rutin terapi GoMilku.",
+        quote: "Sumpah mah bner2 manjur banget susu SR12 dari awal umi ku di katakan kata dokter gagal jantung hampir kaget di buatnya, eh pas nemu susu SR12 bner2 manjur banget mah kata dokter ada prubhan drastis, terimaksih ya mah atas srannya akhirnya emi skrang sudah sehat kembali.",
+        keywords: "gagal jantung kardiovaskular jantung umi kontrol dokter membaik drastis sembuh"
+      },
+      {
+        id: 5,
+        file: "IMG_20261026_123949_991.jpg",
+        category: "pernapasan",
+        categoryName: "Saluran Pernapasan",
+        tagClass: "tag-pernapasan",
+        audience: ["dewasa"],
+        title: "Batuk Berdarah 2 Minggu Reda Dalam 2 Hari Konsumsi Rutin",
+        benefit: "Batuk kronis berdahak darah selama dua minggu mereda cepat hanya dalam 2 hari setelah rutin minum GoMilku pagi dan malam.",
+        quote: "Jadi 2 Minggu yang lalu aku batuk ga berhenti2, sampe berdahak dan ada darahnya, ga smpt untuk ke cek dokter, aku rutinin aja minum gomilku pagi dan malam, selama 2 hari itu Alhamdulillah batuk berkurang dan gak keluar dahak berdarah Lg.",
+        keywords: "batuk berdarah batuk 2 minggu dahak darah paru flek 2 hari reda sembuh"
+      },
+      {
+        id: 6,
+        file: "IMG_20261026_124002_210.jpg",
+        category: "pernapasan",
+        categoryName: "Paru-Paru Basah",
+        tagClass: "tag-pernapasan",
+        audience: ["dewasa"],
+        title: "Paru-Paru Bersih Dari Cairan Berkat Rutin GoMilku Pagi-Sore",
+        benefit: "Terbukti melalui hasil medis USG dan rontgen: paru-paru yang sebelumnya terendam cairan (paru-paru basah) sembuh total dan bersih dalam 2 bulan.",
+        quote: "Maa syaa allah bgt saksi sembuhnya paru2 dari cairan, pagi sore genjot susu kambing dari SR 12, cuma butuh 2 bulan setelah di USG dan rontgent paru2nya jadi bersih. Sampe sekarang ttp konsisten minum susu kambing ini, padahal udah sehat.",
+        keywords: "paru paru bersih cairan paru paru basah rontgen usg dokter flek 2 bulan sembuh total"
+      },
+      {
+        id: 7,
+        file: "IMG_20261026_124124_417.jpg",
+        category: "anak",
+        categoryName: "Tumbuh Kembang Anak",
+        tagClass: "tag-anak",
+        audience: ["anak"],
+        title: "BB Anak Naik Drastis 2.25 Kg, Nafsu Makan Lahap & Kulit Rambut Lembap",
+        benefit: "Anak yang sulit makan setelah coba berbagai vitamin kini nafsu makan meningkat tajam, BB naik 2.25 kg, makan di sekolah selalu habis, kulit dan rambut makin sehat bercahaya.",
+        quote: "Konsumsi 1 renteng 1 bok naik drastis 2,25kg... udah sering ganti2 vitamin makan buat anak nya, tapi gk ngaruh baru kali ini... makan nya jadi gak susah. MBG disekolah selalu habis katanya, daan plus nya lagi Kulit dan Rambut nya itu kok makin bagus ya katanya jadi lembab dan bersih gitu.",
+        keywords: "berat badan anak bb naik 2kg nafsu makan gtm lahap kulit lembap rambut bersih vitamin anak"
+      },
+      {
+        id: 8,
+        file: "IMG_20261026_124150_600.jpg",
+        category: "busui",
+        categoryName: "Stamina & Puasa",
+        tagClass: "tag-stamina",
+        audience: ["dewasa", "puasa", "anak"],
+        title: "Badan Bebas Lelah & Full Energi Sepanjang Menjalankan Ibadah Puasa",
+        benefit: "Menjaga kebugaran dan stamina optimal selama puasa Ramadhan, anak sekolah pun mampu berpuasa penuh tanpa lemas atau lesu.",
+        quote: "Pasti mau lah semenjak minum susu aku ga ngerasa capek Alhamdulillah... Zeta jg thn ini puasa full sengaruh itu ya. Makasih banyaak yaa mam Lancar lapang terus rezekinya.",
+        keywords: "puasa ramadhan tidak capek stamina full energi anak puasa full bugar sahur"
+      },
+      {
+        id: 9,
+        file: "IMG_20261026_124205_073.jpg",
+        category: "tulang",
+        categoryName: "Pegal Linu & Premenopause",
+        tagClass: "tag-tulang",
+        audience: ["dewasa", "lansia", "puasa"],
+        title: "Bangun Pagi Bebas Sakit & Pegal, Stabilkan Mood di Masa Premenopause",
+        benefit: "Meredakan nyeri pegal badan saat menjelang menopause, menjaga suasana hati tetap tenang, dan membuat tubuh bangun tidur segar bugar.",
+        quote: "Ternyata emang enak kalau di minum malam hari ya Le. Apalagi kalau lagi pegel pegelnya datang. Masa masa Premenepous buat mood gak stabil... Bener banged. Bangun pagi gak sakit2 kan badan.. Gak peghel2 lagi gimana gituh. Ai minum sahur plus mkn kurma sebijik udah.. Kuat sepanjang hari.",
+        keywords: "pegal linu premenopause mood bangun pagi segar sakit badan tulang sahur kurma"
+      },
+      {
+        id: 10,
+        file: "IMG_20261026_124250_177.jpg",
+        category: "tulang",
+        categoryName: "Kesehatan Tulang",
+        tagClass: "tag-tulang",
+        audience: ["lansia", "dewasa"],
+        title: "Tanpa Gula Tambahan, Solusi Aman Keropos Tulang Lansia",
+        benefit: "Formulasi murni rendah gula menjaga kepadatan massa tulang lansia tanpa memicu lonjakan gula darah, tidur menjadi jauh lebih lelap.",
+        quote: "Rasa Pas, tanpa gula tambahan. Menjaga kesehatan Tulang, tubuh & kualitas tidur. Mertua minum susu cocok banget, badan seger tidur nyenyak.",
+        keywords: "tulang pengeroposan osteoporosis tanpa gula lansia tidur nyenyak kalsium"
+      },
+      {
+        id: 11,
+        file: "IMG_20261026_124306_054.jpg",
+        category: "rasa",
+        categoryName: "Aroma & Rasa Bersih",
+        tagClass: "tag-rasa",
+        audience: ["dewasa", "anak"],
+        title: "Susu GoMilku Sangat Enak, Lembut dan Tidak Berbau Prengus",
+        benefit: "Diolah dengan teknologi modern sehingga aroma prengus khas kambing hilang total, rasa milky lembut yang sangat disukai.",
+        quote: "Enak susunya kak... Alhamdulillah kalau suka dgn susu gomilku SR12. Enak dan ga bau prengus.",
+        keywords: "tidak bau prengus enak milky lembut harum tidak enek"
+      },
+      {
+        id: 12,
+        file: "IMG_20261026_124354_262.jpg",
+        category: "busui",
+        categoryName: "Ibu Menyusui (Busui)",
+        tagClass: "tag-busui",
+        audience: ["busui", "dewasa"],
+        title: "Rasa Gurih Pas, Tidak Bikin Enek & Sangat Dianjurkan Bagi Ibu Menyusui",
+        benefit: "Rasa tidak terlalu manis dan bebas enek, menjadikannya pilihan favorit ibu menyusui untuk menjaga suplai ASI tetap berlimpah dan berbobot.",
+        quote: "Suka kaa, rasanya ga bikin enek, trs jg ga manis. Kirain bakal bikin enek soalnya susu kambing, eh ternyata ga enek sama sekali enak bgtt makasi ya ka hihii... itu bagus bngt buat busui.",
+        keywords: "busui ibu menyusui asi lancar tidak enek tidak manis enak rasa pas"
+      },
+      {
+        id: 13,
+        file: "IMG_20261026_124631_432.jpg",
+        category: "anak",
+        categoryName: "Daya Tahan Tubuh Anak",
+        tagClass: "tag-anak",
+        audience: ["anak"],
+        title: "Anak Tidak Gampang Sakit Setelah Setahun Lebih Rutin Minum GoMilku",
+        benefit: "Kandungan imunoglobulin dan nutrisi alami susu kambing memperkuat benteng daya tahan tubuh anak sehingga jarang sekali tertular sakit.",
+        quote: "Anakku udah setahun lebih minumnya gomilku Alhamdulillah ga gampang sakit jadinya... Semalam aja pas belanja 2 jutaan itu kunkirim ke Lampung semua habis.",
+        keywords: "anak jarang sakit imunitas daya tahan tubuh balita sehat bugar"
+      },
+      {
+        id: 14,
+        file: "IMG_20261026_124708_438.jpg",
+        category: "degeneratif",
+        categoryName: "Diabetes & Gula Darah",
+        tagClass: "tag-degeneratif",
+        audience: ["lansia", "dewasa"],
+        title: "Kadar Gula Darah Tinggi 200-300 Turun dan Kembali Normal (100-an)",
+        benefit: "Terapi konsumsi selama 2 bulan membantu meregulasi gula darah konsumen; angka gula darah yang semula selalu di atas 200 bahkan 300 kini stabil di angka 127 - 167.",
+        quote: "Ibu km 2 bulan ini kdar gula darah ny udh turun kaak maka ny dia mnum terus kk susu gomilku nya. Biasa klau d cek tu di atas 200 an terus bahkan smpee 300 an, tp 2 bln ni gula darah ny turun jadi 100 an aj, maren 167, trus 127.",
+        keywords: "gula darah diabetes kencing manis glukosa 300 jadi 100 normal cek darah lab"
+      },
+      {
+        id: 15,
+        file: "IMG_20261026_124723_991.jpg",
+        category: "lambung",
+        categoryName: "Maag & Asam Lambung",
+        tagClass: "tag-lambung",
+        audience: ["dewasa", "puasa"],
+        title: "Penderita Sakit Maag Bebas Mual Saat Sahur & Lancar Berpuasa",
+        benefit: "Sifat basa (alkalin) alami dari susu kambing menetralisir keasaman lambung, mencegah rasa mual dan perih saat berpuasa.",
+        quote: "Tiap sahur minum susu sr12 masya Allah mual2 ga ad lgi krna aku pnderita magh Alhamdulillah Aman puasa.",
+        keywords: "maag asam lambung mual sahur puasa perut perih nyaman berpuasa"
+      },
+      {
+        id: 16,
+        file: "IMG_20261026_124901_369.jpg",
+        category: "busui",
+        categoryName: "Busui Kuat Berpuasa",
+        tagClass: "tag-busui",
+        audience: ["busui", "puasa"],
+        title: "Ibu Menyusui Tetap Kuat Puasa Seharian Tanpa Pusing & Lemas",
+        benefit: "Kombinasi GoMilku sachet dan sari kurma saat sahur menjaga metabolisme busui stabil sehingga tetap kuat menyusui sambil menuntaskan puasa.",
+        quote: "Yul tapi emang bagus bgt ya susunya. Tiap sahur gua minum Alhamdulillah puasa kuat bener. Padahal gua masih nyusuin... gua jga baru thn ini bulan puasa rutin minum susu+sari kurmanya gak ada drama2 lemes atau laper. Padahal biasanya klo puasa tuh baru setengah hari aja udah pusing gak bertenaga.",
+        keywords: "busui ibu menyusui sahur puasa sari kurma tidak lemes tidak pusing bertenaga"
+      },
+      {
+        id: 17,
+        file: "IMG_20261026_124908_975.jpg",
+        category: "tulang",
+        categoryName: "Kesemutan & Saraf",
+        tagClass: "tag-tulang",
+        audience: ["lansia", "dewasa"],
+        title: "Baru Minum Beberapa Kali, Gejala Kesemutan & Carangkeul Berkurang",
+        benefit: "Memperbaiki mikrosirkulasi darah dan saraf perifer, keluhan tangan/kaki sering kesemutan (carangkeul) berkurang dalam beberapa hari konsumsi.",
+        quote: "Ibu next order go milku yang kemasan 25gr.. Buat stok saum. Alhamdulillah baru bbrapa hari bisa mengurangi kesemutan carangkeul ibu bukan hoax ini mah langsung dikonsumsi langsung sendiri.",
+        keywords: "kesemutan carangkeul kebas saraf pegal linu sachet saum puasa"
+      },
+      {
+        id: 18,
+        file: "IMG_20261026_125125_061.jpg",
+        category: "rasa",
+        categoryName: "Rasa Tidak Amis",
+        tagClass: "tag-rasa",
+        audience: ["dewasa", "anak"],
+        title: "Rasa Enak Banget, Tidak Bau Amis dan Sangat Lembut di Lidah",
+        benefit: "Sangat bersahabat bagi yang sensitif terhadap aroma susu; teksturnya creamy, gurih nikmat, dan tidak meninggalkan aftertaste amis.",
+        quote: "Susunya enak cut, ga bau samsek. Ak takut awalnya mo coba krn ga kuat bau amis susu.",
+        keywords: "tidak bau amis enak gurih lembut tidak mual"
+      },
+      {
+        id: 19,
+        file: "IMG_20261026_125146_153.jpg",
+        category: "pernapasan",
+        categoryName: "Batuk & Imunitas",
+        tagClass: "tag-pernapasan",
+        audience: ["dewasa", "anak"],
+        title: "Sinergi GoMilku + VCO Ampuh Redakan Batuk, Gatal Tenggorokan & Bapil",
+        benefit: "Kombinasi GoMilku dengan VCO menjadi solusi herbal handal tanpa ketergantungan obat kimia untuk meredakan radang tenggorokan dan batuk pilek keluarga.",
+        quote: "Tp gw enakan loh tenggorokan, kmrn smpet gatel bngt udh gejala2 batuk cz klo tdur batuk Mulu, tiap pagi abs sarapan gw mnum ajh gomilku... Alhamdulillah reda, udh enakan g merajalela itu bapil. Gomilku+vco bisa jadi andalan deh, g perlu LG lirik/konsumsi obat kimia.. Abang Zahir udh bersin2 trs sm batuk, gw minumin gomilku jg sblm tdur alhamdulillah sehat2.",
+        keywords: "batuk pilek bapil gatal tenggorokan radang vco tanpa obat kimia anak sehat"
+      },
+      {
+        id: 20,
+        file: "IMG_20261026_125512_736.jpg",
+        category: "lambung",
+        categoryName: "GERD & Luka Lambung",
+        tagClass: "tag-lambung",
+        audience: ["dewasa"],
+        title: "Atasi Luka Lambung, GERD & Masuk Angin dengan Campuran Herbal",
+        benefit: "Sangat nikmat diseduh bersama ekstrak jahe atau kunyit; efektif melapisi dinding mukosa lambung yang meradang serta meredakan gejala GERD.",
+        quote: "Semua minum mb aq kebagian minum juga Ya Allah enaaak bangeet ga nyangka klo itu susu kambing, apa lagi campur jahee kayak nya makiin enaak yh mb... kemarin Abang pas masuk angin minum susu gomilku + Jamu Jahe nya Alhamdulillah tinggal terapi aja sering2 susu + kunyit jg buat luka lambung dan gerd nya.",
+        keywords: "luka lambung gerd maag jahe kunyit masuk angin asam lambung herbal"
+      },
+      {
+        id: 21,
+        file: "IMG_20261026_125527_703.jpg",
+        category: "pernapasan",
+        categoryName: "Asma & Saluran Nafas",
+        tagClass: "tag-pernapasan",
+        audience: ["anak"],
+        title: "Asma & Sesak Nafas 'Ngik-Ngik' Anak Reda, Paru-Paru Jauh Lebih Longgar",
+        benefit: "Efek luar biasa pada penderita asma anak; saat anak demam atau flu, nafas tidak lagi berbunyi 'ngik-ngik' atau sesak berkat GoMilku.",
+        quote: "Waktu Ziyyan sakit kmrn itu sempet beli yg kemasan 600gr yh, Alhamdulillah anak nya sukaa bener2 ga bau prengus embe dan milky bangeet... ternyata ngefek banget ke asma atau paru2, jadi skrg klo demam atau bapil Alhamdulillah Ya Allah ga sesek lagi mb, biasanya klo bapil dikit nafas lngsung ngik2 ini skrg ga.",
+        keywords: "asma sesak nafas ngik ngik mengi paru paru saluran pernafasan balita batuk pilek"
+      },
+      {
+        id: 22,
+        file: "IMG_20261026_125801_739.jpg",
+        category: "promil",
+        categoryName: "Program Hamil (Promil)",
+        tagClass: "tag-promil",
+        audience: ["dewasa"],
+        title: "Ikhtiar Paket Promil Hamil Positif Setelah 3 Tahun Menanti Pasca Keguguran",
+        benefit: "Ikhtiar kehamilan berhasil: setelah penantian 3 tahun pasca keguguran, konsumen dinyatakan positif hamil berkat rutin GoMilku pagi-malam + Manjakani.",
+        quote: "Selama 3 thn penantian akhirnya Allah SWT datangkan... 3 thn lalu saya sempet keguguran anak k 3, skrng positif hamil anak k 4 baru 5minggu, Alhamdulillah saya rutin minum pagi -malam gomilku sr12 semua varian dan manjakani pil... terimakasih ya ALLAH dengan ikhtiar sr12 herbal bisa hamil lagi.",
+        keywords: "promil program hamil positif garis dua manjakani keguguran 3 tahun kesuburan rahim"
+      },
+      {
+        id: 23,
+        file: "IMG_20261026_130035_961.jpg",
+        category: "lambung",
+        categoryName: "GERD Akut & Asam Lambung",
+        tagClass: "tag-lambung",
+        audience: ["dewasa", "puasa"],
+        title: "Bebas Obat Asam Lambung Sejak Rutin Konsumsi VCO & GoMilku Sesudah Makan",
+        benefit: "Protokol anjuran dokter (dr. Farida): VCO sebelum makan + GoMilku sesudah makan membuat penderita GERD menahun tidak pernah kambuh lagi dan bebas obat.",
+        quote: "Kalau bu dr.Farida menganjurkan buat yg punya asam lambung baiknya diminum sesudah makan... Suami saya punya Gerd sejak Covid, Alhamdulillah sejak awal Ramadhan kmrn rajin minum VCO sblm makan + Gomilku sesudah makan setiap sahur & buka puasa sampai sekarang sudah tidak pernah minum aneka obat asam lambung lagi.. Alhamdulillah.",
+        keywords: "gerd asam lambung dr farida vco bebas obat kimia lambung sembuh puasa"
+      },
+      {
+        id: 24,
+        file: "IMG_20261026_130443_090.jpg",
+        category: "kulit",
+        categoryName: "Jerawat & Kulit",
+        tagClass: "tag-kulit",
+        audience: ["dewasa"],
+        title: "Kandungan Susu Etawa GoMilku Membantu Cegah Jerawat & Meregenerasi Kulit",
+        benefit: "Penderita jerawat parah yang kebal krim racikan dokter akhirnya sembuh total, jerawat mengering dan tidak muncul lagi berkat regenerasi kulit dari dalam.",
+        quote: "Baru tahu kalo susu sr12 bisa buat jerawat bun yang setrobery aku penderita jerawat puarah tapi setelah minum sr12 yang setrobery kog jerawat sembuh kering sudah pakek crem racikan dokter bun jerawat tumbuh trus... sekarang klo sr12 bisa buat jerawat dan sembuh cocok disaya bun... setelah konsumsi sr12 jerawat ngak nonggol sama sekali.",
+        keywords: "jerawat parah jerawat kering sembuh regenerasi kulit stroberi wajah bersih"
+      },
+      {
+        id: 25,
+        file: "IMG_20261103_202809_566.jpg",
+        category: "pernapasan",
+        categoryName: "Flek Paru & TBC",
+        tagClass: "tag-pernapasan",
+        audience: ["lansia", "dewasa"],
+        title: "Flek Paru-Paru Membaik Nyata Berdasarkan Bukti Rontgen Medis",
+        benefit: "Bukti rontgen toraks memperlihatkan berkurangnya bercak flek pada paru-paru ayah pasien yang rutin meminum GoMilku, nafas semakin lega.",
+        quote: "Bapak saya sakit paru\" ada flek alhamdulillah setelah rutin minum gomilku SR 12 sudah membaik pak ada perubahan... Hasil rontgen menunjukkan perubahan signifikan membaik.",
+        keywords: "flek paru paru tbc rontgen toraks bapak lansia sembuh pernapasan"
+      },
+      {
+        id: 26,
+        file: "IMG_20261103_202823_141.jpg",
+        category: "kulit",
+        categoryName: "Kesehatan Rambut & Anti-Aging",
+        tagClass: "tag-kulit",
+        audience: ["dewasa", "lansia"],
+        title: "Nutrisi Lengkap GoMilku Bikin Rambut Baru Tumbuh Hitam & Lebih Cepat",
+        benefit: "Menutrisi akar rambut dan saluran pencernaan; rambut baru tumbuh hitam pekat, lembut, dan tampak berkilau sehat alami.",
+        quote: "Mbak....sekedat ceeita ya.... Saya minum susu ini...rambut sy yg dekat dahi...tumbuhnya hitam.lho.....hahaha Saya takut jadi muda lagi... L3mbut2 rambut baru ...warna hitam... Yp pasti rambut jg kliatan mengkilat mbak....sehat... Mungkin karena nutrisinya bagus njih Bu, dan ususnya sehat jadi efek positifnya kemana2.",
+        keywords: "rambut hitam tumbuh rambut rontok nutrisi usus sehat anti aging awet muda"
+      },
+      {
+        id: 27,
+        file: "IMG_20261103_202854_379.jpg",
+        category: "anak",
+        categoryName: "Kecerdasan Otak Anak",
+        tagClass: "tag-anak",
+        audience: ["anak"],
+        title: "Meningkatkan Kecerdasan Otak & Konsentrasi Anak, Rasa Alami Tanpa Pemanis Kimia",
+        benefit: "Formula aman bebas sukrosa buatan yang mendukung perkembangan sel saraf otak anak; rasa cokelat alaminya disukai dan menaikkan berat badan.",
+        quote: "Allhamdulillah anak suka, Susu Gomilku untuk meningkatkan kecerdasan otak anak... Ni asik minta dia... Alhamdullilah maub. Padahal ngak ada rasa kan? Iya hambar karna kan ga ada sukrosa sama pemanis buatan... Nanti isna cek BB sebelum dan sesudah rutin minum gomilku.",
+        keywords: "kecerdasan otak anak konsentrasi daya ingat tanpa sukrosa pemanis buatan coklat"
+      },
+      {
+        id: 28,
+        file: "IMG_20261103_202901_253.jpg",
+        category: "anak",
+        categoryName: "Bebas Nebulizer / Uap",
+        tagClass: "tag-anak",
+        audience: ["anak"],
+        title: "Balita Terbebas dari Rutinitas Nebulizer Uap Mingguan & Makin Lincah",
+        benefit: "Ibu yang sebelumnya harus menguap anaknya tiap minggu karena batuk pilek dan sesak, kini bersyukur balitanya sembuh total, aktif, lincah, dan cerdas tanggap.",
+        quote: "Alhamdulillah Bu sekarang Fatih jarang sakitnya dan Uda jarang batuk pilek padahal dulu sering di uap, Sbg ibu aku Gak tega setiap Minggu harus uap karena bapil, ... Sekarang kemampuan nangkep nya pinter bgt MashaAllah, Jd aktif dan lincah... Terimakasih go milk dan SR12 dan Bu bidan yg jadi perantara.",
+        keywords: "nebulizer uap batuk pilek anak asma balita lincah pintar daya tangkap otak"
+      },
+      {
+        id: 29,
+        file: "IMG_20261103_202908_946.jpg",
+        category: "pernapasan",
+        categoryName: "Sesak di Dada",
+        tagClass: "tag-pernapasan",
+        audience: ["lansia", "dewasa"],
+        title: "Keluhan Sesak di Dada Ibu Hilang Total Belum Habis 1 Kotak",
+        benefit: "Meringankan rasa sesak berat di dada pada orang tua; belum habis sekotak, ibu sudah kembali ceria dan kuat mengasuh cucu.",
+        quote: "Lo ibuk saya gak ngeluh sesak di dada lagi, padahal minum susu gomilku masih belum habis sekotak.... Alhamdulillah momong cucu dengan ceria... Saya stok 1 kotak, kemarin lusa sudah datang paketnya.",
+        keywords: "sesak di dada sesak napas lansia orang tua ibu momong cucu sekotak sembuh"
+      },
+      {
+        id: 30,
+        file: "IMG_20261103_202915_144.jpg",
+        category: "anak",
+        categoryName: "TB Paru & Pneumonia Balita",
+        tagClass: "tag-anak",
+        audience: ["anak"],
+        title: "Nutrisi Pemulihan Balita Penyintas TB Paru & Pneumonia, Lahap Makan",
+        benefit: "Mendukung pemulihan paru balita pasca infeksi TB dan pneumonia berat; menaikkan nafsu makan dan sukses menggantikan susu UHT biasa.",
+        quote: "Ubay sih cocok susunya... Kayaknya memang nafsu makannya jadi meningkat. 2-3x aja sehari... Udah gak pernah beli UHT lagi. Baguss... 2 box susu coklat 1 box susu vanilla Lemon.",
+        keywords: "tb paru pneumonia balita penyintas paru nafsu makan pengganti uht anak sehat"
+      },
+      {
+        id: 31,
+        file: "IMG_20261103_202920_500.jpg",
+        category: "anak",
+        categoryName: "Nafsu Makan Anak",
+        tagClass: "tag-anak",
+        audience: ["anak"],
+        title: "Anak Makan Lahap Sampai 5x Sehari Setelah Rutin GoMilku Cokelat",
+        benefit: "Solusi jitu anak yang 'kenyang palsu' akibat sufor biasa. Minum GoMilku cokelat membuat anak lahap makan nasi hingga 5 kali sehari.",
+        quote: "Ponakanku to kan selalu langganan GoMilku SR12 rasa cokelat 600g untuk anaknya, Nah beberapa bulan kemarin dapat susu gratis dari puskesmas, Merk DANC*W, tapi anaknya trus jadi nggak nafsu makan mbak, Kyk udah kenyang gitu minum susu itu aja, Padahal kalau minum Susu GoMilku SR12 itu sehari bisa makan 5x lho mbak. Dikit-dikit minta makan, makannya lahap banget Mbak, Akhirnya sekarang beli GoMilku cokelat 600g lagi.",
+        keywords: "nafsu makan anak makan 5 kali lahap gtm cokelat 600gr sufor berat badan"
+      },
+      {
+        id: 32,
+        file: "IMG_20261103_202924_131.jpg",
+        category: "anak",
+        categoryName: "Berat Badan Balita",
+        tagClass: "tag-anak",
+        audience: ["anak"],
+        title: "Anak Lahap Makan & Tubuh Jadi Padat Berisi Berbobot",
+        benefit: "Nutrisi lengkap yang diserap sempurna membuat balita cepat bertambah bobot badannya, tubuh terlihat lebih padat, berisi, dan sehat.",
+        quote: "Klau susu Alhamdulillah ank sya suka trus menambah napsu makan nya jugk badan nya dah tambah brisi.",
+        keywords: "nafsu makan anak badan berisi gemuk sehat balita padat berbobot"
+      },
+      {
+        id: 33,
+        file: "IMG_20261103_202929_909.jpg",
+        category: "benjolan",
+        categoryName: "Benjolan Payudara",
+        tagClass: "tag-benjolan",
+        audience: ["dewasa"],
+        title: "Benjolan di Payudara Terasa Mengecil & Kelenjar Hilang Setelah Rutin Sachet",
+        benefit: "Kandungan daun kelor dan asam lemak etawa membantu meredakan inflamasi jaringan; benjolan dan kelenjar di area payudara mengecil dan lenyap.",
+        quote: "Temen jg pesen lg, soalnya dia ngerasa benjolan d payudaranya mengecil ktny mi, makanya skrg psn lg... Iyaa emang ateu banyak yg ngerasai khasiatnya alhamdulillaah ateuu wasilah... Iyaa umi Alhamdulillah, Ateu ge sembuh, kelenjar kecil teh uda ilang.",
+        keywords: "benjolan di payudara kelenjar getah bening tumor kista sachet mengecil hilang"
+      },
+      {
+        id: 34,
+        file: "IMG_20261103_202936_666.jpg",
+        category: "promil",
+        categoryName: "Kelancaran Haid",
+        tagClass: "tag-kewanitaan",
+        audience: ["dewasa"],
+        title: "Siklus Datang Bulan / Haid Jadi Lancar, Bersih & Deras Tuntas",
+        benefit: "Membantu menyeimbangkan hormon dan melancarkan peluruhan darah haid yang tidak teratur menjadi lancar, deras, dan tuntas.",
+        quote: "Pas udah ga minum demamnya Alhamdulillah baikan... Saya minum susu, haid saya deres banget Bun,, maa syaa Allah... Mashaallah boleh mba aku ambil buat testi.",
+        keywords: "haid deras lancar menstruasi darah kotor hormon kewanitaan teratur"
+      },
+      {
+        id: 35,
+        file: "IMG_20261103_202956_604.jpg",
+        category: "benjolan",
+        categoryName: "Benjolan Ketiak",
+        tagClass: "tag-benjolan",
+        audience: ["dewasa"],
+        title: "Benjolan Nyeri Mirip Kutil di Ketiak Mengecil Hanya Dalam 2 Hari",
+        benefit: "Ekstrak daun kelor dalam GoMilku yang kaya antioksidan dan zat anti-kanker/tumor terbukti mengecilkan benjolan ketiak yang meradang dalam 2 hari.",
+        quote: "Dr dl d ketiak teh ada benjolan kecil kyk kutil,, kmrn teh ngegedein dan sakit bangettt,, ateu olesin mnyak MHS tiap hr tp msh skt, trs mnm susu 2 hr berturut. Eehh pas td d pegang ngecilin tes g sakit... muhun ateu kan dia ada ekstrak daun kelor nya dia bagus utk tumor kanker semacam2 benjolan gitu anti radikal bebas.",
+        keywords: "benjolan di ketiak kelenjar kutil bengkak sakit daun kelor tumor kanker 2 hari"
+      },
+      {
+        id: 36,
+        file: "IMG_20261103_203010_053.jpg",
+        category: "degeneratif",
+        categoryName: "Lupus, Sendi & Diet",
+        tagClass: "tag-degeneratif",
+        audience: ["dewasa"],
+        title: "Perjuangan Remisi dari Obat Lupus (Autoimun), Nyeri Tulang Hilang & Turun 5 Kg",
+        benefit: "Kisah luar biasa: penderita autoimun lupus berhasil lepas obat kimia (Calos, Metilprednisolon, Imuran), nyeri sendi/tulang mereda, dan bobot turun 5 kg.",
+        quote: "Awalx minum gomilk cuma mau diet aja.. tpi saya rasakan kok tulang2 dan sendi2 yg biasa sakit kl kecapean tiba2 Maasya Alloh ngerasa enakan dan ngk terlalu sakit sprti biasa nya... Akhirnya saya putuskan untuk tinggalkan obat calos kalsium dri dokter... setelah 1 bulan remisi dri calos.. akhirnya saya putuskan untuk melepas obat lupus methil prednisolone pelan2... biidznillah saya bisa melewati masa remisi ini dg keadaan yg tidak seberat tahun lalu... sekarang saya tdk merasa berat sebagaimana saya dl remisi obat imuran... Bonus BB turun 5 kg.",
+        keywords: "lupus autoimun remisi obat calos kalsium imuran methilprednisolone sendi tulang diet turun 5kg"
+      },
+      {
+        id: 37,
+        file: "IMG_20261103_203022_660.jpg",
+        category: "lambung",
+        categoryName: "Nyeri Ulu Hati",
+        tagClass: "tag-lambung",
+        audience: ["dewasa"],
+        title: "Nyeri Lambung & Ulu Hati Seminggu Sembuh Total, Bisa Makan Sambal Lagi",
+        benefit: "Nyeri ulu hati hebat selama seminggu yang tidak mempan obat dokter sembuh total setelah rutin 2x sehari (pagi dan sore), pencernaan kembali normal.",
+        quote: "Alhamdulillah bisa makan ini lagi... kmarin lebih dari seminggu lambung nyeri ulu hati sakit terus, ga brani makan pedes, dah minum obat ga ngaruh msh suka nyeri lambung.. makanya kmarin mutusin buat beli go milku aq rutinin sehari 2x pagi sama sore ..alhamdulillah sembuhh... sekarang mah udh normal.. yazid juga suka dia.",
+        keywords: "lambung nyeri ulu hati perih maag sakit lambung sembuh pagi sore pedas normal"
+      }
+    ];
+
+    // Category Metadata for headers
+    const categoryInfo = {
+      all: {
+        title: "🌐 Semua Testimoni GoMilku",
+        desc: "Menampilkan seluruh koleksi testimoni terverifikasi konsumen SR12 GoMilku Reguler"
+      },
+      pernapasan: {
+        title: "🫁 Paru-Paru & Saluran Pernapasan",
+        desc: "Kumpulan testimoni flek paru, paru basah, batuk berdarah, batuk pilek, asma, dan sesak dada"
+      },
+      anak: {
+        title: "👶 Kesehatan & Nafsu Makan Anak",
+        desc: "Testimoni peningkatan nafsu makan, kenaikan BB anak 2+ kg, bebas uap nebulizer, dan daya tahan tubuh"
+      },
+      lambung: {
+        title: "🫄 Lambung, GERD & Maag",
+        desc: "Solusi klinis maag kronis, asam lambung kambuhan, nyeri ulu hati, dan rasa mual saat puasa"
+      },
+      tulang: {
+        title: "🦴 Tulang, Sendi & Pegal Linu",
+        desc: "Pencegahan osteoporosis keropos tulang, pegal linu, kesemutan (carangkeul), dan tidur nyenyak"
+      },
+      degeneratif: {
+        title: "🩺 Diabetes, Jantung & Autoimun",
+        desc: "Testimoni penurunan gula darah tinggi, pemulihan gagal jantung, dan remisi obat autoimun/lupus"
+      },
+      benjolan: {
+        title: "🔬 Benjolan & Kelenjar",
+        desc: "Manfaat ekstrak daun kelor untuk mengecilkan benjolan payudara, kelenjar ketiak, dan radikal bebas"
+      },
+      promil: {
+        title: "🌸 Program Hamil & Kewanitaan",
+        desc: "Ikhtiar promil sukses setelah 3 tahun pasca keguguran, serta kelancaran siklus datang bulan (haid)"
+      },
+      busui: {
+        title: "🤱 Ibu Menyusui & Puasa",
+        desc: "Ibu menyusui tetap bertenaga puasa seharian tanpa lemas, plus peningkatan kualitas produksi ASI"
+      },
+      kulit: {
+        title: "✨ Jerawat, Kulit & Diet",
+        desc: "Regenerasi kulit wajah bekas jerawat, pertumbuhan rambut hitam berkilau, dan penurunan BB"
+      },
+      rasa: {
+        title: "🥛 Rasa Gurih & Bebas Prengus",
+        desc: "Pengalaman rasa lezat perpaduan sari kurma, bebas bau kambing/prengus, dan tanpa pemanis kimia"
+      }
+    };
+
+    // State Variables
+    let currentCategory = "all";
+    let currentAudienceFilter = "all";
+    let currentSearchQuery = "";
+    let filteredList = [...testimoniData];
+    let activeModalIndex = 0;
+
+    // DOM Elements
+    const grid = document.getElementById("catalogGrid");
+    const searchInput = document.getElementById("searchInput");
+    const activeCatTitle = document.getElementById("activeCategoryTitle");
+    const activeCatDesc = document.getElementById("activeCategoryDesc");
+    const resultCountEl = document.getElementById("resultCount");
+    const sidebar = document.getElementById("verticalSidebar");
+
+    // Initialize counts in sidebar
+    function initCategoryCounts() {
+      const counts = { all: testimoniData.length };
+      testimoniData.forEach(item => {
+        counts[item.category] = (counts[item.category] || 0) + 1;
+      });
+
+      for (let cat in counts) {
+        const badge = document.getElementById(`count-${cat}`);
+        if (badge) badge.innerText = counts[cat];
+      }
+    }
+
+    // Filter Logic
+    function applyFilters() {
+      filteredList = testimoniData.filter(item => {
+        // Category filter
+        const matchCategory = (currentCategory === "all") || (item.category === currentCategory);
+
+        // Audience / pill filter
+        let matchAudience = true;
+        if (currentAudienceFilter !== "all") {
+          matchAudience = item.audience.includes(currentAudienceFilter);
+        }
+
+        // Search query filter
+        let matchSearch = true;
+        if (currentSearchQuery.trim() !== "") {
+          const q = currentSearchQuery.toLowerCase();
+          const targetText = `${item.title} ${item.benefit} ${item.quote} ${item.keywords} ${item.categoryName}`.toLowerCase();
+          matchSearch = targetText.includes(q);
+        }
+
+        return matchCategory && matchAudience && matchSearch;
+      });
+
+      renderGrid();
+    }
+
+    // Render Grid Cards
+    function renderGrid() {
+      resultCountEl.innerHTML = `Menampilkan <strong>${filteredList.length}</strong> dari 37 testimoni`;
+
+      if (filteredList.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">🔎</div>
+            <h3>Tidak Ditemukan Testimoni yang Cocok</h3>
+            <p>Coba gunakan kata kunci lain atau pilih kategori "Semua Testimoni" di sidebar.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filteredList.map((item, index) => {
+        return `
+          <div class="card" data-id="${item.id}">
+            <div class="card-img-wrap" onclick="openModal(${index})">
+              <img src="${item.file}" alt="${item.title}" class="card-img" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=${item.file}';">
+              <span class="zoom-badge">🔍 Klik Perbesar</span>
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="cat-tag ${item.tagClass}">${item.categoryName}</span>
+                <span class="file-tag">${item.file.replace('.jpg', '')}</span>
+              </div>
+              <h3 class="card-title">${item.title}</h3>
+              <div class="card-khasiat">
+                <strong>💡 Solusi Klinis:</strong> ${item.benefit}
+              </div>
+              <div class="card-chat">
+                "${item.quote}"
+              </div>
+              <div class="card-btns">
+                <button class="btn btn-outline" onclick="openModal(${index})">
+                  🔍 Lihat Foto
+                </button>
+                <button class="btn btn-primary" onclick="copyCardCaption(${item.id})">
+                  📋 Salin Iklan
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Sidebar Category Click Handler
+    document.querySelectorAll(".cat-nav-item").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".cat-nav-item").forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
+
+        const cat = button.getAttribute("data-cat");
+        currentCategory = cat;
+
+        // Update Header Titles
+        if (categoryInfo[cat]) {
+          activeCatTitle.innerHTML = categoryInfo[cat].title;
+          activeCatDesc.innerText = categoryInfo[cat].desc;
+        }
+
+        applyFilters();
+
+        // Close mobile sidebar if open
+        if (window.innerWidth <= 992) {
+          sidebar.classList.remove("open");
+        }
+      });
+    });
+
+    // Audience Pill Click Handler
+    document.querySelectorAll(".pill-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".pill-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentAudienceFilter = btn.getAttribute("data-filter");
+        applyFilters();
+      });
+    });
+
+    // Search Input Handler
+    searchInput.addEventListener("input", (e) => {
+      currentSearchQuery = e.target.value;
+      applyFilters();
+    });
+
+    // Toggle Mobile Sidebar
+    function toggleSidebar() {
+      sidebar.classList.toggle("open");
+    }
+
+    // Modal Lightbox Functions
+    function openModal(index) {
+      activeModalIndex = index;
+      const item = filteredList[index];
+      if (!item) return;
+
+      document.getElementById("modalHeaderTitle").innerText = `${item.categoryName} • Bukti Konsumen`;
+      document.getElementById("modalImg").src = item.file;
+      document.getElementById("modalCatTag").innerText = item.categoryName;
+      document.getElementById("modalCatTag").className = `cat-tag ${item.tagClass}`;
+      document.getElementById("modalFileTag").innerText = item.file;
+      document.getElementById("modalTitle").innerText = item.title;
+      document.getElementById("modalBenefit").innerText = item.benefit;
+      document.getElementById("modalQuote").innerText = `"${item.quote}"`;
+
+      document.getElementById("modalOverlay").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      document.getElementById("modalOverlay").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target.id === "modalOverlay") {
+        closeModal();
+      }
+    }
+
+    function nextModalItem() {
+      if (filteredList.length === 0) return;
+      activeModalIndex = (activeModalIndex + 1) % filteredList.length;
+      openModal(activeModalIndex);
+    }
+
+    function prevModalItem() {
+      if (filteredList.length === 0) return;
+      activeModalIndex = (activeModalIndex - 1 + filteredList.length) % filteredList.length;
+      openModal(activeModalIndex);
+    }
+
+    // Keyboard navigation
+    window.addEventListener("keydown", (e) => {
+      const modal = document.getElementById("modalOverlay");
+      if (modal.classList.contains("active")) {
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowRight") nextModalItem();
+        if (e.key === "ArrowLeft") prevModalItem();
+      }
+    });
+
+    // Toast Notification
+    function showToast(text) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastMsg").innerText = text;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+    }
+
+    // Copy Marketing Caption
+    function generateMarketingCopy(item) {
+      return `✨ TESTIMONI REAL GOMILKU SR12 ✨\n\n📌 Kategori: ${item.categoryName}\n👉 ${item.title}\n\n💡 Manfaat & Khasiat:\n${item.benefit}\n\n💬 Pengalaman Konsumen:\n"${item.quote}"\n\n🌿 Susu Kambing Etawa GoMilku SR12 diperkaya Daun Kelor, Ikan Gabus, dan Madu. Rasa lezat, gurih, dan sama sekali TIDAK BAU PRENGUS!\n\n📲 Info Pemesanan & Konsultasi:\nHubungi kami sekarang juga! #GoMilkuSR12 #TestimoniGoMilku #SR12Herbal #${item.category}`;
+    }
+
+    function copyCardCaption(itemId) {
+      const item = testimoniData.find(x => x.id === itemId);
+      if (!item) return;
+      const copyText = generateMarketingCopy(item);
+      navigator.clipboard.writeText(copyText).then(() => {
+        showToast("Teks promosi & testimoni berhasil disalin!");
+      }).catch(() => {
+        showToast("Gagal menyalin ke clipboard");
+      });
+    }
+
+    function copyCurrentModalText() {
+      const item = filteredList[activeModalIndex];
+      if (!item) return;
+      const copyText = generateMarketingCopy(item);
+      navigator.clipboard.writeText(copyText).then(() => {
+        showToast("Teks promosi & testimoni berhasil disalin!");
+      });
+    }
+
+    // Initialize on page load
+    initCategoryCounts();
+    applyFilters();
+  </script>
+</body>
+</html>
