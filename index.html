@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Edukasi Konsumen GoMilku Reguler SR12</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --primary-soft: #ecfdf5;
+      --accent: #f59e0b;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --foreground: #0f172a;
+      --muted-foreground: #64748b;
+    }
+    .active-tab {
+      background-color: #10b981 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased font-sans min-h-screen pb-16">
+
+  <!-- TOP NAVBAR -->
+  <header class="sticky top-0 z-50 bg-[var(--card)]/95 backdrop-blur-md border-b border-[var(--border)] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Branding -->
+        <a href="gomilku_edukasi_portal.html" onclick="switchTab('beranda')" class="flex items-center gap-3 group">
+          <img src="gomilku logo png-01.png" 
+               alt="Logo GoMilku SR12" 
+               class="h-10 sm:h-11 w-auto max-w-[140px] sm:max-w-[160px] object-contain transition-transform group-hover:scale-105" 
+               onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white font-bold text-xl shadow-md\'>G</div><div><span class=\'text-lg font-black tracking-tight text-emerald-800\'>GoMilku<span class=\'text-amber-500\'>.</span></span><span class=\'text-xs block font-medium text-[var(--muted-foreground)] -mt-1\'>Edukasi Resmi SR12</span></div>';" />
+          <div class="hidden sm:block border-l border-slate-200 pl-3">
+            <span class="text-xs block font-bold text-emerald-800 leading-tight">Portal Edukasi Resmi</span>
+            <span class="text-[10px] block font-medium text-[var(--muted-foreground)]">Susu Kambing Etawa SR12</span>
+          </div>
+        </a>
+
+        <!-- Navigation Menus -->
+        <nav class="hidden md:flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200" id="nav-container">
+          <button onclick="switchTab('beranda')" id="tab-beranda" class="nav-btn active-tab px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200">
+            🏠 Beranda
+          </button>
+          <button onclick="switchTab('keunggulan')" id="tab-keunggulan" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-emerald-700 hover:bg-white/80 transition-all duration-200">
+            ✨ Keunggulan
+          </button>
+          <button onclick="switchTab('solusi')" id="tab-solusi" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-emerald-700 hover:bg-white/80 transition-all duration-200">
+            🩺 Solusi Kesehatan
+          </button>
+          <button onclick="switchTab('varian')" id="tab-varian" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-emerald-700 hover:bg-white/80 transition-all duration-200">
+            🥛 Varian & Cara Minum
+          </button>
+          <button onclick="switchTab('keamanan')" id="tab-keamanan" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-emerald-700 hover:bg-white/80 transition-all duration-200">
+            🛡️ Bukti & Keamanan
+          </button>
+          <a href="Katalog_Testimoni_GoMilku.html" id="tab-testimoni" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-emerald-700 hover:bg-white/80 transition-all duration-200 inline-flex items-center gap-1.5">
+            ⭐ Testimoni
+          </a>
+        </nav>
+
+        <!-- CTA Action Button -->
+        <div class="flex items-center gap-2">
+          <a href="https://wa.me/6281334541949?text=Halo%20Admin%20GoMilku,%20saya%20ingin%20konsultasi%20dan%20order%20GoMilku" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200">
+            <span>💬 Konsultasi & Order WA</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Mobile Quick Menu Scroll -->
+      <div class="flex md:hidden overflow-x-auto py-2.5 gap-2 scrollbar-none border-t border-slate-100">
+        <button onclick="switchTab('beranda')" class="nav-btn-m px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-emerald-600 text-white">🏠 Beranda</button>
+        <button onclick="switchTab('keunggulan')" class="nav-btn-m px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-100 text-slate-700">✨ Keunggulan</button>
+        <button onclick="switchTab('solusi')" class="nav-btn-m px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-100 text-slate-700">🩺 Solusi</button>
+        <button onclick="switchTab('varian')" class="nav-btn-m px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-100 text-slate-700">🥛 Varian</button>
+        <button onclick="switchTab('keamanan')" class="nav-btn-m px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-100 text-slate-700">🛡️ Keamanan</button>
+        <a href="Katalog_Testimoni_GoMilku.html" class="nav-btn-m px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700">⭐ Testimoni</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: BERANDA                             -->
+    <!-- ========================================== -->
+    <div id="content-beranda" class="tab-content space-y-10 block">
+      
+      <!-- Hero Banner with Product Showcase -->
+      <section class="relative rounded-3xl bg-gradient-to-br from-emerald-950 via-teal-900 to-slate-900 text-white p-6 sm:p-10 lg:p-12 overflow-hidden shadow-2xl border border-emerald-800/40">
+        <!-- Background Ambient Glow -->
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-teal-500/10 blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          
+          <!-- Left Column: Title, Value Proposition & Badges -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-300">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>100% Herbal Alami • Tanpa Bau Prengus</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+              Kebaikan Alami Susu Kambing Etawa <br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">
+                Untuk Kesehatan Seutuhnya
+              </span>
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+              Solusi nutrisi keluarga pengganti susu sapi. Diformulasikan khusus dengan sinergi <strong>Susu Kambing Etawa Murni, Ekstrak Ikan Gabus, Daun Kelor, dan Madu</strong>. Lembut di lambung, cepat diserap, dan nikmat diseduh setiap hari.
+            </p>
+
+            <!-- Trust Badges & Legalitas Per Varian -->
+            <div class="space-y-3 pt-1">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 backdrop-blur-md px-3.5 py-1.5 rounded-xl text-xs font-bold border border-emerald-400/30 text-emerald-300">
+                  🕌 Halal MUI ID33110015719330124
+                </span>
+                <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-white/15 text-amber-200">
+                  👶 Usia 1 Tahun s/d Lansia
+                </span>
+              </div>
+
+              <!-- Izin Edar BPOM RI Per Varian -->
+              <div class="bg-black/30 backdrop-blur-md rounded-2xl p-3 sm:p-3.5 border border-white/10 text-xs space-y-2 max-w-xl">
+                <div class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <span>✅ Izin Edar Resmi BPOM RI:</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 font-mono text-[11px] text-slate-200">
+                  <div class="bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span class="font-sans font-bold text-white block text-[10px] text-slate-300">Original:</span>
+                    MD 271111000300341
+                  </div>
+                  <div class="bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span class="font-sans font-bold text-amber-300 block text-[10px]">Cokelat:</span>
+                    MD 271111000500341
+                  </div>
+                  <div class="bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                    <span class="font-sans font-bold text-rose-300 block text-[10px]">Strawberry:</span>
+                    MD 271111000700341
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Product Image Gallery / Showcase Near Title -->
+          <div class="lg:col-span-5">
+            <div class="bg-white/10 backdrop-blur-lg p-5 rounded-3xl border border-white/20 shadow-2xl space-y-4">
+              
+              <!-- Main Featured Product Display -->
+              <div class="relative bg-gradient-to-b from-white/15 to-white/5 rounded-2xl p-4 text-center border border-white/10 flex flex-col items-center justify-center min-h-[220px]">
+                <div class="absolute top-3 left-3 bg-emerald-500 text-white font-bold text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow">
+                  Kemasan Lengkap
+                </div>
+                
+                <!-- Main Image Element -->
+                <img id="main-product-img" 
+                     src="all gomilku 600gr.png" 
+                     alt="GoMilku Reguler Semua Varian 600gr" 
+                     class="max-h-48 max-w-full object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.45)] hover:scale-105 transition-transform duration-300"
+                     onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'py-10 text-center space-y-2\'><span class=\'text-4xl\'>🥛</span><p class=\'text-xs font-bold text-emerald-300\'>all gomilku 600gr.png</p><p class=\'text-[11px] text-slate-300\'>Semua Varian 600gr (Original, Cokelat, Stroberi)</p></div>';" />
+                
+                <p id="main-product-caption" class="text-xs font-semibold text-emerald-200 mt-2">
+                  GoMilku Family Pack 600gr (Original, Cokelat & Stroberi)
+                </p>
+              </div>
+
+              <!-- Product Thumbnails Grid (Clickable to switch view) -->
+              <div class="grid grid-cols-4 gap-2">
+                
+                <!-- Thumb 1: All 600gr -->
+                <button type="button" onclick="changeHeroImage('all gomilku 600gr.png', 'GoMilku Family Pack 600gr (Original, Cokelat & Stroberi)', this)" class="thumb-btn ring-2 ring-emerald-400 bg-white/15 hover:bg-white/25 rounded-xl p-1.5 transition-all text-center flex flex-col items-center justify-between">
+                  <img src="all gomilku 600gr.png" alt="All 600gr" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-sm\'>📦</span>';" />
+                  <span class="text-[10px] font-bold text-white mt-1 leading-tight">Semua</span>
+                </button>
+
+                <!-- Thumb 2: Putih / Original -->
+                <button type="button" onclick="changeHeroImage('Besar dan Kecil Putih.png', 'GoMilku Original (Ukuran 600gr & 200gr)', this)" class="thumb-btn bg-white/15 hover:bg-white/25 rounded-xl p-1.5 transition-all text-center flex flex-col items-center justify-between">
+                  <img src="Besar dan Kecil Putih.png" alt="Original Putih" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-sm\'>🥛</span>';" />
+                  <span class="text-[10px] font-bold text-emerald-200 mt-1 leading-tight">Original</span>
+                </button>
+
+                <!-- Thumb 3: Cokelat -->
+                <button type="button" onclick="changeHeroImage('Besar dan Kecil Coklat.png', 'GoMilku Cokelat (Ukuran 600gr & 200gr)', this)" class="thumb-btn bg-white/15 hover:bg-white/25 rounded-xl p-1.5 transition-all text-center flex flex-col items-center justify-between">
+                  <img src="Besar dan Kecil Coklat.png" alt="Cokelat" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-sm\'>🍫</span>';" />
+                  <span class="text-[10px] font-bold text-amber-200 mt-1 leading-tight">Cokelat</span>
+                </button>
+
+                <!-- Thumb 4: Stroberi -->
+                <button type="button" onclick="changeHeroImage('Besar dan Kecil Straw.png', 'GoMilku Stroberi (Ukuran 600gr & 200gr)', this)" class="thumb-btn bg-white/15 hover:bg-white/25 rounded-xl p-1.5 transition-all text-center flex flex-col items-center justify-between">
+                  <img src="Besar dan Kecil Straw.png" alt="Stroberi" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-sm\'>🍓</span>';" />
+                  <span class="text-[10px] font-bold text-rose-200 mt-1 leading-tight">Stroberi</span>
+                </button>
+
+              </div>
+              
+              <div class="text-center">
+                <span class="text-[11px] text-slate-300">💡 Klik gambar di atas untuk melihat detail varian</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- The 4 Core Formulation Cards (Clickable Infographics Links) -->
+      <section class="space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-3">
+          <div>
+            <div class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-md mb-1">
+              🔍 Edukasi Bahan Alami
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-slate-800">Formulasi 4 Bahan Istimewa GoMilku</h2>
+            <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">Klik pada masing-masing kartu untuk membaca infografis ilmiah lengkapnya.</p>
+          </div>
+          <button onclick="switchTab('keunggulan')" class="text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline shrink-0">
+            Lihat Perbandingan Medis →
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <!-- Card 1: Susu Kambing Etawa -> infografis-susu-kambing-etawa.html -->
+          <a href="infografis-susu-kambing-etawa.html" 
+             class="group block bg-white rounded-2xl p-6 border-2 border-emerald-100 hover:border-emerald-500 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden">
+            <!-- Top Gradient Accent -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-400"></div>
+            
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-2xl font-bold shadow-inner group-hover:scale-110 transition-transform">
+                🥛
+              </div>
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">
+                Bahan Utama
+              </span>
+            </div>
+
+            <h3 class="font-extrabold text-slate-800 text-base group-hover:text-emerald-700 transition-colors">
+              Susu Kambing Etawa
+            </h3>
+            
+            <p class="text-xs text-slate-600 leading-relaxed mt-2.5">
+              Molekul lemak 1/5 lebih kecil dari susu sapi, diserap hanya dalam 20 menit, kaya Fluorin alami untuk paru-paru, dan bebas laktosa berat.
+            </p>
+
+            <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
+              <span>Buka Infografis</span>
+              <span class="inline-block transition-transform duration-200 group-hover:translate-x-1.5">➔</span>
+            </div>
+          </a>
+
+          <!-- Card 2: Ekstrak Ikan Gabus -> infografis-ikan-gabus.html -->
+          <a href="infografis-ikan-gabus.html" 
+             class="group block bg-white rounded-2xl p-6 border-2 border-teal-100 hover:border-teal-500 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden">
+            <!-- Top Gradient Accent -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-teal-500 to-cyan-400"></div>
+            
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-2xl font-bold shadow-inner group-hover:scale-110 transition-transform">
+                🐟
+              </div>
+              <span class="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">
+                Regenerasi Sel
+              </span>
+            </div>
+
+            <h3 class="font-extrabold text-slate-800 text-base group-hover:text-teal-700 transition-colors">
+              Ekstrak Ikan Gabus
+            </h3>
+            
+            <p class="text-xs text-slate-600 leading-relaxed mt-2.5">
+              Sumber protein Albumin alami tertinggi untuk mempercepat penyembuhan luka operasi, regenerasi jaringan rusak, dan pemulihan stamina.
+            </p>
+
+            <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-teal-700 group-hover:text-teal-800">
+              <span>Buka Infografis</span>
+              <span class="inline-block transition-transform duration-200 group-hover:translate-x-1.5">➔</span>
+            </div>
+          </a>
+
+          <!-- Card 3: Ekstrak Daun Kelor -> infografis-daun-kelor.html -->
+          <a href="infografis-daun-kelor.html" 
+             class="group block bg-white rounded-2xl p-6 border-2 border-green-100 hover:border-green-500 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden">
+            <!-- Top Gradient Accent -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-green-500 to-emerald-400"></div>
+            
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-green-50 text-green-700 flex items-center justify-center text-2xl font-bold shadow-inner group-hover:scale-110 transition-transform">
+                🌿
+              </div>
+              <span class="text-[11px] font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded-full">
+                Superfood Nutrisi
+              </span>
+            </div>
+
+            <h3 class="font-extrabold text-slate-800 text-base group-hover:text-green-700 transition-colors">
+              Ekstrak Daun Kelor
+            </h3>
+            
+            <p class="text-xs text-slate-600 leading-relaxed mt-2.5">
+              Dikenal sebagai pohon mukjizat, kaya antioksidan, 7x vitamin C jeruk, 4x kalsium susu sapi, serta ampuh sebagai stimulan pelancar ASI.
+            </p>
+
+            <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-green-700 group-hover:text-green-800">
+              <span>Buka Infografis</span>
+              <span class="inline-block transition-transform duration-200 group-hover:translate-x-1.5">➔</span>
+            </div>
+          </a>
+
+          <!-- Card 4: Madu Alami -> infografis-madu.html -->
+          <a href="infografis-madu.html" 
+             class="group block bg-white rounded-2xl p-6 border-2 border-amber-100 hover:border-amber-500 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden">
+            <!-- Top Gradient Accent -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 to-yellow-400"></div>
+            
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-2xl font-bold shadow-inner group-hover:scale-110 transition-transform">
+                🍯
+              </div>
+              <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">
+                Imunitas Alami
+              </span>
+            </div>
+
+            <h3 class="font-extrabold text-slate-800 text-base group-hover:text-amber-700 transition-colors">
+              Madu Alami Murni
+            </h3>
+            
+            <p class="text-xs text-slate-600 leading-relaxed mt-2.5">
+              Antibakteri alami pelindung usus, pemanis sehat alami bersahabat, memperkuat sistem imun tubuh, serta menghilangkan rasa enek.
+            </p>
+
+            <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-amber-700 group-hover:text-amber-800">
+              <span>Buka Infografis</span>
+              <span class="inline-block transition-transform duration-200 group-hover:translate-x-1.5">➔</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Interactive Widget: Kuis Rekomendasi Kebutuhan -->
+      <section id="kuis" class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 p-6 sm:p-8 rounded-3xl border border-emerald-200 shadow-sm space-y-6">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Fitur Cerdas Edukasi
+          </div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-800 mt-2">Kuis Interaktif: Temukan Rekomendasi Anda</h2>
+          <p class="text-xs sm:text-sm text-slate-600">Pilih profil dan keluhan utama Anda untuk melihat varian rasa & aturan minum yang paling tepat.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">1. Target Konsumsi:</label>
+            <select id="quiz-target" class="w-full text-xs font-medium bg-white border border-slate-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option value="dewasa">Dewasa / Lansia</option>
+              <option value="anak">Anak-anak (Usia > 1 Tahun)</option>
+              <option value="bumil">Ibu Hamil / Menyusui</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">2. Kebutuhan / Keluhan Utama:</label>
+            <select id="quiz-keluhan" class="w-full text-xs font-medium bg-white border border-slate-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option value="lambung">Maag & Asam Lambung (GERD)</option>
+              <option value="pernapasan">Batuk Alergi / Asma / Flek</option>
+              <option value="sendi">Nyeri Sendi & Tulang Rapuh</option>
+              <option value="imun">Daya Tahan Tubuh & Stamina</option>
+              <option value="nafsu_makan">Tambah Nafsu Makan Anak</option>
+              <option value="asi">Pelancar ASI (Booster)</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button onclick="hitungRekomendasi()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3.5 px-4 rounded-xl shadow-md transition-all">
+              ⚡ Dapatkan Solusi
+            </button>
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div id="quiz-result" class="hidden bg-white p-5 rounded-2xl border border-emerald-300 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700" id="res-badge">Hasil Rekomendasi</span>
+            <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full" id="res-rasa">Varian Original</span>
+          </div>
+          <h4 class="font-bold text-base text-slate-800" id="res-title">Solusi Optimal untuk Maag & Asam Lambung</h4>
+          <p class="text-xs text-slate-600 leading-relaxed" id="res-desc">
+            Susu kambing bersifat basa (alkali alami) yang menetralisir kelebihan asam lambung. Varian Original sangat disarankan agar terhindar dari pemanis tambahan.
+          </p>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div><strong>Anjuran Minum:</strong> <span id="res-takaran">2 sendok makan + 150ml air hangat kuku (2x sehari: pagi & malam)</span></div>
+            <a href="https://wa.me/6281334541949?text=Halo%20Admin%20GoMilku,%20saya%20ingin%20pesan%20varian%20hasil%20kuis%20edukasi" target="_blank" class="text-emerald-700 font-bold hover:underline whitespace-nowrap">Order via WhatsApp →</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: KEUNGGULAN (MENGAPA GOMILKU?)       -->
+    <!-- ========================================== -->
+    <div id="content-keunggulan" class="tab-content space-y-10 hidden">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-800">Mengapa Harus GoMilku Reguler?</h2>
+        <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">Fakta nutrisi dan sains sederhana di balik keunggulan GoMilku dibanding susu lainnya.</p>
+      </div>
+
+      <!-- VISUAL INFOGRAFIS KOMPARASI: SUSU ETAWA VS SAPI -->
+      <section class="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-md space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-full border border-emerald-200 mb-1">
+              📊 Edukasi Perbandingan Ilmiah
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-800">Infografis: Susu Kambing Etawa vs Susu Sapi</h3>
+            <p class="text-xs text-slate-500">Visualisasi perbedaan struktur molekul, daya serap lambung, dan toleransi alergi.</p>
+          </div>
+          
+          <!-- Tombol Link Menampilkan infografis-komparasi-susu.html -->
+          <div class="flex items-center gap-2 shrink-0">
+            <a href="infografis-komparasi-susu.html" 
+               class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200">
+              <span>📄 Buka Halaman Komparasi Lengkap</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Container Gambar Susu Etawa vs Sapi.jpg (Proporsional & Mudah Dibaca) -->
+        <div class="relative bg-slate-50/80 rounded-2xl p-2 sm:p-4 border border-slate-200 flex flex-col items-center justify-center overflow-hidden">
+          <img src="Susu Etawa vs Sapi.jpg" 
+               alt="Infografis Susu Etawa vs Sapi GoMilku" 
+               onclick="openZoom(this.src)"
+               class="w-full h-auto max-h-[850px] object-contain rounded-xl shadow-sm hover:scale-[1.008] transition-transform duration-300 cursor-zoom-in"
+               onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'py-16 text-center space-y-2\'><span class=\'text-5xl\'>🥛🆚🐄</span><p class=\'text-sm font-bold text-emerald-800\'>Susu Etawa vs Sapi.jpg</p><p class=\'text-xs text-slate-500\'>Pastikan file foto berada di folder yang sama dengan file HTML ini.</p></div>';" />
+          
+          <div class="w-full flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-slate-500 px-2 pt-3 border-t border-slate-200/60 mt-2 gap-2">
+            <span>💡 Tips: Klik gambar di atas untuk zoom / membaca detail infografis secara fullscreen.</span>
+            <div class="flex items-center gap-3">
+              <button onclick="openZoom('Susu Etawa vs Sapi.jpg')" class="font-bold text-emerald-700 hover:underline">🔍 Perbesar Tampilan</button>
+              <a href="infografis-komparasi-susu.html" class="font-bold text-emerald-800 hover:underline">Pelajari Komparasi Ilmiah →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Komparasi Susu Kambing vs Sapi (Tabel Data Cepat) -->
+      <div class="bg-[var(--card)] rounded-3xl p-6 sm:p-8 border border-[var(--border)] shadow-sm space-y-6">
+        <h3 class="text-lg font-bold text-slate-800">Perbandingan: Susu Sapi Biasa vs Susu Kambing GoMilku</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50 text-slate-700 font-bold">
+                <th class="p-3">Indikator</th>
+                <th class="p-3">Susu Sapi Biasa</th>
+                <th class="p-3 bg-emerald-100 text-emerald-900 rounded-t-xl">GoMilku (Etawa + Herbal)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-600">
+              <tr>
+                <td class="p-3 font-semibold text-slate-800">Waktu Cerna di Lambung</td>
+                <td class="p-3">± 120 Menit (Berat)</td>
+                <td class="p-3 bg-emerald-50/60 font-semibold text-emerald-900">± 20 Menit (Sangat Ringan)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-800">Ukuran Molekul Lemak</td>
+                <td class="p-3">Besar, memicu rasa enek/begah</td>
+                <td class="p-3 bg-emerald-50/60 font-semibold text-emerald-900">1/5 lebih kecil, cepat diserap</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-800">Kadar Laktosa</td>
+                <td class="p-3">Tinggi (Sering diare/alergi)</td>
+                <td class="p-3 bg-emerald-50/60 font-semibold text-emerald-900">Rendah (Aman untuk sensitif susu)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-800">Sifat Keasaman (pH)</td>
+                <td class="p-3">Cenderung Asam</td>
+                <td class="p-3 bg-emerald-50/60 font-semibold text-emerald-900">Alkali (Basa) Alami ramah Maag</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-800">Tambahan Nutrisi</td>
+                <td class="p-3">Hanya susu hewani murni</td>
+                <td class="p-3 bg-emerald-50/60 font-semibold text-emerald-900">+ Ikan Gabus, Kelor & Madu Murni</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Myth Buster Grid -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-slate-800">Fakta Ilmiah vs Mitos Konsumen</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-5 bg-white rounded-2xl border border-rose-200 shadow-sm space-y-2">
+            <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">❌ Mitos 1</span>
+            <h4 class="font-bold text-sm text-slate-800">"Susu kambing bikin darah tinggi"</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Fakta:</strong> Salah besar! Susu kambing kaya Kalium alami yang justru membantu menjaga elastisitas pembuluh darah dan menstabilkan tensi.
+            </p>
+          </div>
+          <div class="p-5 bg-white rounded-2xl border border-rose-200 shadow-sm space-y-2">
+            <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">❌ Mitos 2</span>
+            <h4 class="font-bold text-sm text-slate-800">"Pasti baunya prengus amis kambing"</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Fakta:</strong> GoMilku diproses dengan teknologi evaporasi modern tertutup sehingga aroma prengus hilang total. Rasa gurih dan disukai anak-anak.
+            </p>
+          </div>
+          <div class="p-5 bg-white rounded-2xl border border-rose-200 shadow-sm space-y-2">
+            <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">❌ Mitos 3</span>
+            <h4 class="font-bold text-sm text-slate-800">"Bikin berat badan naik drastis"</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Fakta:</strong> Asam lemak pada susu kambing adalah rantai sedang (MCT) yang langsung diubah menjadi energi, bukan disimpan sebagai lemak jenuh.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: SOLUSI KESEHATAN                   -->
+    <!-- ========================================== -->
+    <div id="content-solusi" class="tab-content space-y-8 hidden">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-800">Solusi Berdasarkan Kebutuhan Anda</h2>
+        <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">Pilih kategori masalah kesehatan di bawah ini untuk melihat ulasan detail manfaat dan mapping terpadunya.</p>
+      </div>
+
+      <!-- SECTION EMBED: MAPPING KONDISI KESEHATAN -->
+      <section class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-md space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-full border border-emerald-200 mb-1">
+              🗺️ Integrasi Matriks Kesehatan
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-800">Peta & Mapping Kondisi Kesehatan Lengkap</h3>
+            <p class="text-xs text-slate-500">Katalog pencocokan keluhan penyakit dengan bahan aktif, varian rasa, dan takaran minum.</p>
+          </div>
+          
+          <div class="flex items-center gap-2 shrink-0">
+            <a href="mapping-kondisi-Kesehatan.html" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition">
+              <span>Buka Mapping Layar Penuh ➔</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Embedded Interactive Frame mapping-kondisi-Kesehatan.html -->
+        <div class="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-50">
+          <iframe src="mapping-kondisi-Kesehatan.html" 
+                  title="Mapping Kondisi Kesehatan GoMilku" 
+                  class="w-full h-[620px] rounded-2xl border-0"
+                  loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-slate-500 px-1 pt-1 gap-2">
+          <span>💡 Anda dapat mencari keluhan atau memfilter kategori organ langsung pada tabel interaktif di atas.</span>
+          <a href="mapping-kondisi-Kesehatan.html" class="font-bold text-emerald-700 hover:underline">Buka di Tab Baru →</a>
+        </div>
+      </section>
+
+      <!-- Sub-heading untuk Kartu Cepat -->
+      <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <h3 class="text-base font-bold text-slate-800">Kartu Rangkuman Cepat per Kategori Organ</h3>
+        <span class="text-xs text-slate-500">Filter cepat kartu di bawah:</span>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <button onclick="filterSolusi('all')" class="solusi-filter-btn active-solusi-btn bg-emerald-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition">Semua Manfaat</button>
+        <button onclick="filterSolusi('lambung')" class="solusi-filter-btn bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-4 py-2 rounded-xl hover:bg-slate-50 transition">🥛 Maag & Asam Lambung</button>
+        <button onclick="filterSolusi('pernapasan')" class="solusi-filter-btn bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-4 py-2 rounded-xl hover:bg-slate-50 transition">🫁 Saluran Pernapasan</button>
+        <button onclick="filterSolusi('tulang')" class="solusi-filter-btn bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-4 py-2 rounded-xl hover:bg-slate-50 transition">🦴 Tulang & Sendi Lansia</button>
+        <button onclick="filterSolusi('anak')" class="solusi-filter-btn bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-4 py-2 rounded-xl hover:bg-slate-50 transition">👶 Tumbuh Kembang Anak</button>
+        <button onclick="filterSolusi('ibu')" class="solusi-filter-btn bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-4 py-2 rounded-xl hover:bg-slate-50 transition">🤰 Ibu Hamil & Menyusui</button>
+      </div>
+
+      <!-- Grid Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="solusi-grid">
+        
+        <!-- Card 1: Lambung -->
+        <div class="solusi-card bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)] shadow-sm space-y-3" data-cat="lambung">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-lg">🥛</div>
+          <h3 class="font-bold text-base text-slate-800">Menetralkan Maag & GERD</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Sifat alkali alami susu etawa bertindak sebagai antasida alami yang meredakan sensasi perih terbakar di lambung dan kerongkongan.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 p-2 rounded-lg">
+            Saran: Minum varian Original 30 menit sebelum makan.
+          </div>
+        </div>
+
+        <!-- Card 2: Pernapasan -->
+        <div class="solusi-card bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)] shadow-sm space-y-3" data-cat="pernapasan">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-lg">🫁</div>
+          <h3 class="font-bold text-base text-slate-800">Terapi Paru-paru & Asma</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Mengandung senyawa fluorine alami 10x lebih tinggi dari susu sapi yang membantu mengencerkan dahak, melegakan saluran bronkus, dan meredakan batuk menahun.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 p-2 rounded-lg">
+            Saran: Seduh hangat di malam hari sebelum tidur.
+          </div>
+        </div>
+
+        <!-- Card 3: Tulang & Sendi -->
+        <div class="solusi-card bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)] shadow-sm space-y-3" data-cat="tulang">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-lg">🦴</div>
+          <h3 class="font-bold text-base text-slate-800">Cegah Osteoporosis & Nyeri Sendi</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Tinggi Kalsium dan Fosfor organik yang mudah diserap tanpa membebani ginjal. Menjaga kepadatan tulang dan melumasi persendian orang tua.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 p-2 rounded-lg">
+            Saran: Rutin 2x sehari untuk orang tua dan lansia.
+          </div>
+        </div>
+
+        <!-- Card 4: Anak -->
+        <div class="solusi-card bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)] shadow-sm space-y-3" data-cat="anak">
+          <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-800 flex items-center justify-center font-bold text-lg">👶</div>
+          <h3 class="font-bold text-base text-slate-800">Daya Tahan & Nafsu Makan Anak</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Kombinasi Daun Kelor dan Madu melengkapi kebutuhan gizi balita (>1 tahun). Pilihan tepat untuk anak yang alergi susu sapi atau sering GTM.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 p-2 rounded-lg">
+            Saran: Varian Cokelat atau Stroberi sangat disukai si kecil.
+          </div>
+        </div>
+
+        <!-- Card 5: Ibu Hamil & Menyusui -->
+        <div class="solusi-card bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)] shadow-sm space-y-3" data-cat="ibu">
+          <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-800 flex items-center justify-center font-bold text-lg">🤰</div>
+          <h3 class="font-bold text-base text-slate-800">Booster ASI & Nutrisi Janin</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Ekstrak Daun Kelor terkenal sebagai galaktagog alami pelancar produksi ASI, sekaligus mencegah anemia pada ibu hamil karena kaya asam folat alami.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 p-2 rounded-lg">
+            Saran: Konsumsi rutin selama masa menyusui.
+          </div>
+        </div>
+
+        <!-- Card 6: Pemulihan -->
+        <div class="solusi-card bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)] shadow-sm space-y-3" data-cat="lambung">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg">⚡</div>
+          <h3 class="font-bold text-base text-slate-800">Pemulihan Luka Pasca Sakit / Operasi</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Albumin dari ekstrak Ikan Gabus mempercepat pembentukan sel darah putih dan penutupan luka dalam maupun luka bedah luar.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 p-2 rounded-lg">
+            Saran: Sangat baik dikonsumsi saat masa rawat jalan.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: VARIAN & CARA MINUM                -->
+    <!-- ========================================== -->
+    <div id="content-varian" class="tab-content space-y-10 hidden">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-800">Varian Rasa & Panduan Penyajian</h2>
+        <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">Pilih rasa favorit keluarga Anda dan ikuti aturan seduh agar nutrisinya tetap utuh.</p>
+      </div>
+
+      <!-- 3 Flavors with Combined Images Showcase -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- CARD 1: VARIAN ORIGINAL -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border-2 border-emerald-400 shadow-md relative space-y-4 flex flex-col justify-between">
+          <div class="absolute -top-3 right-5 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow">
+            Paling Favorit
+          </div>
+          
+          <div class="space-y-3">
+            <!-- Header Kartu -->
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🥛</span>
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-800">Varian Original</h3>
+                <p class="text-xs text-emerald-600 font-semibold">Gurih Lembut Alami & Kaya Nutrisi</p>
+              </div>
+            </div>
+
+            <!-- Main Display Area (Click to Zoom) -->
+            <div class="relative bg-gradient-to-b from-emerald-50/50 to-slate-50 rounded-2xl p-3 border border-emerald-100 flex flex-col items-center justify-center min-h-[190px] group cursor-zoom-in"
+                 onclick="openZoom(document.getElementById('main-img-ori').src)">
+              <span class="absolute top-2 left-2 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                🔍 Klik untuk Zoom
+              </span>
+              <img id="main-img-ori" 
+                   src="GOMILKU ORIGINAL UPDATE.png" 
+                   alt="GoMilku Varian Original" 
+                   class="max-h-44 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+                   onerror="this.onerror=null; this.src='Besar dan Kecil Ori 1.png'; this.onerror=function(){this.src='GoMilku Original 600gr.png';};" />
+            </div>
+
+            <!-- Gallery 3 Gabungan File (Original) -->
+            <div class="space-y-1.5">
+              <span class="text-[11px] font-bold text-slate-500 block">Pilihan Tampilan Kemasan:</span>
+              <div class="grid grid-cols-3 gap-2">
+                <!-- 1. GOMILKU ORIGINAL UPDATE.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-ori', 'GOMILKU ORIGINAL UPDATE.png', this, 'ring-emerald-500')" 
+                        class="thumb-ori ring-2 ring-emerald-500 bg-slate-50 hover:bg-emerald-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="GOMILKU ORIGINAL UPDATE.png" alt="Original 200g" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>📦</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">Kemasan 200g</span>
+                </button>
+
+                <!-- 2. GoMilku Original 600gr.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-ori', 'GoMilku Original 600gr.png', this, 'ring-emerald-500')" 
+                        class="thumb-ori bg-slate-50 hover:bg-emerald-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="GoMilku Original 600gr.png" alt="Original 600gr" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>🥛</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">Kemasan 600g</span>
+                </button>
+
+                <!-- 3. Besar dan Kecil Ori 1.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-ori', 'Besar dan Kecil Ori 1.png', this, 'ring-emerald-500')" 
+                        class="thumb-ori bg-slate-50 hover:bg-emerald-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="Besar dan Kecil Ori 1.png" alt="Besar Kecil Ori" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>🥛📦</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">1 kg (40 sachet)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Manfaat & Khasiat -->
+            <p class="text-xs text-slate-600 leading-relaxed pt-1">
+              Rasa murni susu kambing dengan manis alami madu. Paling disarankan untuk terapi lambung (Maag/GERD), saluran pernapasan/asma, dan kebutuhan lansia.
+            </p>
+          </div>
+
+          <!-- Bottom Info -->
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-600">
+            <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-lg">Kemasan: 200g, 600g & 1Kg</span>
+            <a href="https://wa.me/6281334541949?text=Halo%20Admin%20GoMilku,%20saya%20ingin%20pesan%20GoMilku%20Original" target="_blank" class="text-emerald-700 hover:underline font-bold">Pesan Original →</a>
+          </div>
+        </div>
+
+        <!-- CARD 2: VARIAN COKLAT -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border-2 border-amber-300 shadow-md relative space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <!-- Header Kartu -->
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🍫</span>
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-800">Varian Cokelat</h3>
+                <p class="text-xs text-amber-700 font-semibold">Lezat & Disukai Anak-anak</p>
+              </div>
+            </div>
+
+            <!-- Main Display Area (Click to Zoom) -->
+            <div class="relative bg-gradient-to-b from-amber-50/50 to-slate-50 rounded-2xl p-3 border border-amber-100 flex flex-col items-center justify-center min-h-[190px] group cursor-zoom-in"
+                 onclick="openZoom(document.getElementById('main-img-coklat').src)">
+              <span class="absolute top-2 left-2 bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                🔍 Klik untuk Zoom
+              </span>
+              <img id="main-img-coklat" 
+                   src="GOMILKU COKELAT UPDATE.png" 
+                   alt="GoMilku Varian Cokelat" 
+                   class="max-h-44 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+                   onerror="this.onerror=null; this.src='Besar dan Kecil Coklat.png'; this.onerror=function(){this.src='GoMilku Cokelat 600gr.png';};" />
+            </div>
+
+            <!-- Gallery 3 Gabungan File (Cokelat) -->
+            <div class="space-y-1.5">
+              <span class="text-[11px] font-bold text-slate-500 block">Pilihan Tampilan Kemasan:</span>
+              <div class="grid grid-cols-3 gap-2">
+                <!-- 1. GOMILKU COKELAT UPDATE.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-coklat', 'GOMILKU COKELAT UPDATE.png', this, 'ring-amber-500')" 
+                        class="thumb-coklat ring-2 ring-amber-500 bg-slate-50 hover:bg-amber-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="GOMILKU COKELAT UPDATE.png" alt="Cokelat 200g" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>📦</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">Kemasan 200g</span>
+                </button>
+
+                <!-- 2. GoMilku Cokelat 600gr.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-coklat', 'GoMilku Cokelat 600gr.png', this, 'ring-amber-500')" 
+                        class="thumb-coklat bg-slate-50 hover:bg-amber-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="GoMilku Cokelat 600gr.png" alt="Cokelat 600gr" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>🍫</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">Kemasan 600g</span>
+                </button>
+
+                <!-- 3. Besar dan Kecil Coklat.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-coklat', 'Besar dan Kecil Coklat.png', this, 'ring-amber-500')" 
+                        class="thumb-coklat bg-slate-50 hover:bg-amber-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="Besar dan Kecil Coklat.png" alt="Besar Kecil Coklat" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>🍫📦</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">1 kg (40 sachet)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Manfaat & Khasiat -->
+            <p class="text-xs text-slate-600 leading-relaxed pt-1">
+              Rasa cokelat premium lezat tanpa rasa enek. Solusi efektif untuk anak yang sulit minum susu putih, menambah nafsu makan, dan booster tenaga harian.
+            </p>
+          </div>
+
+          <!-- Bottom Info -->
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-600">
+            <span class="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg">Kemasan: 200g, 600g & 1Kg</span>
+            <a href="https://wa.me/6281334541949?text=Halo%20Admin%20GoMilku,%20saya%20ingin%20pesan%20GoMilku%20Cokelat" target="_blank" class="text-amber-700 hover:underline font-bold">Pesan Cokelat →</a>
+          </div>
+        </div>
+
+        <!-- CARD 3: VARIAN STROBERI -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border-2 border-rose-300 shadow-md relative space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <!-- Header Kartu -->
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🍓</span>
+              <div>
+                <h3 class="font-extrabold text-lg text-slate-800">Varian Stroberi</h3>
+                <p class="text-xs text-rose-600 font-semibold">Segar, Harum & Kaya Antioksidan</p>
+              </div>
+            </div>
+
+            <!-- Main Display Area (Click to Zoom) -->
+            <div class="relative bg-gradient-to-b from-rose-50/50 to-slate-50 rounded-2xl p-3 border border-rose-100 flex flex-col items-center justify-center min-h-[190px] group cursor-zoom-in"
+                 onclick="openZoom(document.getElementById('main-img-straw').src)">
+              <span class="absolute top-2 left-2 bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                🔍 Klik untuk Zoom
+              </span>
+              <img id="main-img-straw" 
+                   src="GOMILKU STROBERI UPDATE.png" 
+                   alt="GoMilku Varian Stroberi" 
+                   class="max-h-44 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+                   onerror="this.onerror=null; this.src='Besar dan Kecil Straw.png'; this.onerror=function(){this.src='GoMilku Strawberry 600gr.png';};" />
+            </div>
+
+            <!-- Gallery 3 Gabungan File (Stroberi) -->
+            <div class="space-y-1.5">
+              <span class="text-[11px] font-bold text-slate-500 block">Pilihan Tampilan Kemasan:</span>
+              <div class="grid grid-cols-3 gap-2">
+                <!-- 1. GOMILKU STROBERI UPDATE.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-straw', 'GOMILKU STROBERI UPDATE.png', this, 'ring-rose-500')" 
+                        class="thumb-straw ring-2 ring-rose-500 bg-slate-50 hover:bg-rose-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="GOMILKU STROBERI UPDATE.png" alt="Stroberi 200g" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>📦</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">Kemasan 200g</span>
+                </button>
+
+                <!-- 2. GoMilku Strawberry 600gr.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-straw', 'GoMilku Strawberry 600gr.png', this, 'ring-rose-500')" 
+                        class="thumb-straw bg-slate-50 hover:bg-rose-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="GoMilku Strawberry 600gr.png" alt="Stroberi 600gr" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>🍓</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">Kemasan 600g</span>
+                </button>
+
+                <!-- 3. Besar dan Kecil Straw.png -->
+                <button type="button" 
+                        onclick="switchVariantImg('main-img-straw', 'Besar dan Kecil Straw.png', this, 'ring-rose-500')" 
+                        class="thumb-straw bg-slate-50 hover:bg-rose-50 p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-between transition text-center">
+                  <img src="Besar dan Kecil Straw.png" alt="Besar Kecil Stroberi" class="h-10 w-full object-contain" onerror="this.outerHTML='<span class=\'text-xs\'>🍓📦</span>';" />
+                  <span class="text-[9px] font-bold text-slate-700 mt-1 leading-tight line-clamp-1">1 kg (40 sachet)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Manfaat & Khasiat -->
+            <p class="text-xs text-slate-600 leading-relaxed pt-1">
+              Aroma buah stroberi segar yang menggugah selera. Pilihan favorit remaja, ibu hamil yang sering mengalami mual (*morning sickness*), dan pecinta rasa segar.
+            </p>
+          </div>
+
+          <!-- Bottom Info -->
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-600">
+            <span class="bg-rose-50 text-rose-800 px-2.5 py-1 rounded-lg">Kemasan: 200g, 600g & 1Kg</span>
+            <a href="https://wa.me/6281334541949?text=Halo%20Admin%20GoMilku,%20saya%20ingin%20pesan%20GoMilku%20Stroberi" target="_blank" class="text-rose-700 hover:underline font-bold">Pesan Stroberi →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Panduan Cara Seduh (Step-by-Step) -->
+      <div class="bg-[var(--card)] rounded-3xl p-6 sm:p-8 border border-[var(--border)] shadow-sm space-y-6">
+        <h3 class="text-lg font-bold text-slate-800 text-center sm:text-left">Petunjuk Cara Seduh yang Benar</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">1</div>
+            <div class="space-y-1">
+              <h4 class="font-bold text-sm text-slate-800">Takaran Sendok</h4>
+              <p class="text-xs text-slate-600">Masukkan 2 sendok makan bubuk GoMilku ke dalam gelas bersih.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">2</div>
+            <div class="space-y-1">
+              <h4 class="font-bold text-sm text-slate-800">Gunakan Air Hangat</h4>
+              <p class="text-xs text-slate-600">Tuangkan 150ml air hangat kuku. <span class="text-rose-600 font-semibold">Hindari air mendidih</span> agar nutrisi protein tidak rusak.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">3</div>
+            <div class="space-y-1">
+              <h4 class="font-bold text-sm text-slate-800">Aduk & Nikmati</h4>
+              <p class="text-xs text-slate-600">Aduk rata hingga larut sempurna. Minum 2 kali sehari (pagi dan malam).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: BUKTI & KEAMANAN                   -->
+    <!-- ========================================== -->
+    <div id="content-keamanan" class="tab-content space-y-8 hidden">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-800">Jaminan Keamanan & Keaslian Produk</h2>
+        <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">Belanja aman dan tenang. GoMilku diproduksi sesuai standar higienis dan regulasi resmi.</p>
+      </div>
+
+      <!-- ROW LOGO SERTIFIKASI RESMI (URUTAN: HALAL ID, BPOM, ISO, GMP) -->
+      <section class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            ✅ Sertifikasi & Standar Mutu Resmi
+          </span>
+          <span class="text-[11px] text-slate-400 font-medium hidden sm:inline">Terverifikasi Lembaga Resmi</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center justify-items-center pt-2">
+          
+          <!-- 1. HALAL ID LOGO.png -->
+          <div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-50/80 hover:bg-emerald-50/50 border border-slate-200/80 transition-all w-full max-w-[220px] min-h-[115px] text-center group cursor-zoom-in" 
+               onclick="openZoom('HALAL ID LOGO.png')">
+            <img src="HALAL ID LOGO.png" 
+                 alt="Logo Halal Indonesia" 
+                 class="h-14 w-auto max-w-[120px] object-contain group-hover:scale-105 transition-transform" 
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-center space-y-1\'><span class=\'text-3xl\'>🕌</span><p class=\'text-[10px] font-bold text-slate-700\'>HALAL ID LOGO.png</p></div>';" />
+            <span class="text-[11px] font-bold text-slate-700 mt-2">Halal Indonesia</span>
+          </div>
+
+          <!-- 2. BPOM LOGO.png -->
+          <div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-50/80 hover:bg-blue-50/50 border border-slate-200/80 transition-all w-full max-w-[220px] min-h-[115px] text-center group cursor-zoom-in" 
+               onclick="openZoom('BPOM LOGO.png')">
+            <img src="BPOM LOGO.png" 
+                 alt="Logo BPOM RI" 
+                 class="h-14 w-auto max-w-[120px] object-contain group-hover:scale-105 transition-transform" 
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-center space-y-1\'><span class=\'text-3xl\'>🛡️</span><p class=\'text-[10px] font-bold text-slate-700\'>BPOM LOGO.png</p></div>';" />
+            <span class="text-[11px] font-bold text-slate-700 mt-2">BPOM RI</span>
+          </div>
+
+          <!-- 3. ISO.png -->
+          <div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-50/80 hover:bg-slate-100 border border-slate-200/80 transition-all w-full max-w-[220px] min-h-[115px] text-center group cursor-zoom-in" 
+               onclick="openZoom('ISO.png')">
+            <img src="ISO.png" 
+                 alt="Logo Standar ISO" 
+                 class="h-14 w-auto max-w-[120px] object-contain group-hover:scale-105 transition-transform" 
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-center space-y-1\'><span class=\'text-3xl\'>🌐</span><p class=\'text-[10px] font-bold text-slate-700\'>ISO.png</p></div>';" />
+            <span class="text-[11px] font-bold text-slate-700 mt-2">ISO Certified</span>
+          </div>
+
+          <!-- 4. GMP LOGO.png -->
+          <div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-50/80 hover:bg-amber-50/50 border border-slate-200/80 transition-all w-full max-w-[220px] min-h-[115px] text-center group cursor-zoom-in" 
+               onclick="openZoom('GMP LOGO.png')">
+            <img src="GMP LOGO.png" 
+                 alt="Logo Standar GMP" 
+                 class="h-14 w-auto max-w-[120px] object-contain group-hover:scale-105 transition-transform" 
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-center space-y-1\'><span class=\'text-3xl\'>⚙️</span><p class=\'text-[10px] font-bold text-slate-700\'>GMP LOGO.png</p></div>';" />
+            <span class="text-[11px] font-bold text-slate-700 mt-2">GMP Quality</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Legalitas Box -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-3xl border border-emerald-200 shadow-sm flex items-start gap-5">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-700 font-black text-2xl flex items-center justify-center shrink-0">BPOM</div>
+          <div class="space-y-1">
+            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">Resmi Terdaftar</span>
+            <h3 class="font-bold text-base text-slate-800">Izin Edar BPOM RI</h3>
+            <p class="text-xs text-slate-600">Telah lolos uji klinis standar pangan olahan fungsional BPOM RI.</p>
+            <div class="text-[11px] font-mono text-slate-700 space-y-0.5 pt-1.5">
+              <div><strong class="font-sans font-bold text-slate-900">Original:</strong> MD 271111000300341</div>
+              <div><strong class="font-sans font-bold text-amber-900">Cokelat:</strong> MD 271111000500341</div>
+              <div><strong class="font-sans font-bold text-rose-900">Strawberry:</strong> MD 271111000700341</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl border border-emerald-200 shadow-sm flex items-center gap-5">
+          <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-700 font-black text-2xl flex items-center justify-center shrink-0">HALAL</div>
+          <div class="space-y-1">
+            <span class="text-[11px] font-bold text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full">100% Halal</span>
+            <h3 class="font-bold text-base text-slate-800">Sertifikat Halal MUI</h3>
+            <p class="text-xs text-slate-600">Dari peternakan kambing etawa pilihan hingga proses packaging terjamin kehalalannya.</p>
+            <p class="text-xs font-mono font-bold text-slate-800 pt-1">ID33110015719330124</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION EMBED: REGULATORY FRAMEWORK VISUALIZATION -->
+      <section class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-md space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-200 mb-1">
+              ⚖️ Kerangka Regulasi & Legalitas Resmi
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-800">Visualisasi Landasan Regulasi (BPOM MD vs BPOM TR)</h3>
+            <p class="text-xs text-slate-500">Analisis dikotomi legalitas pangan olahan vs obat tradisional, batasan klaim, serta pemetaan 14 brand.</p>
+          </div>
+          
+          <div class="flex items-center gap-2 shrink-0">
+            <a href="regulatory_framework_visualization.html" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition">
+              <span>Buka Regulasi Layar Penuh ➔</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Embedded Frame regulatory_framework_visualization.html -->
+        <div class="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-50">
+          <iframe src="regulatory_framework_visualization.html" 
+                  title="Kerangka Regulasi dan Legalitas Resmi GoMilku" 
+                  class="w-full h-[680px] rounded-2xl border-0"
+                  loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-slate-500 px-1 pt-1 gap-2">
+          <span>💡 Anda dapat berinteraksi dengan tab dikotomi, batasan klaim iklan, dan matriks kompetitor langsung di atas.</span>
+          <a href="regulatory_framework_visualization.html" class="font-bold text-emerald-700 hover:underline">Buka di Tab Baru →</a>
+        </div>
+      </section>
+
+      <!-- Ciri Produk Asli -->
+      <div class="bg-amber-50/60 p-6 sm:p-8 rounded-3xl border border-amber-200 space-y-4">
+        <h3 class="font-bold text-base text-slate-800 flex items-center gap-2">
+          <span>⚠️</span> Waspada Produk Palsu di Pasaran Murah
+        </h3>
+        <p class="text-xs text-slate-700 leading-relaxed">
+          Pastikan membeli produk GoMilku asli dari Agen & Distributor Resmi SR12 dengan ciri-ciri:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="bg-white p-4 rounded-xl border border-amber-200 text-xs space-y-1">
+            <strong class="text-slate-800 block">1. Segel Hologram SR12</strong>
+            <span class="text-slate-600">Kemasan kotak tersegel rapi dengan stiker hologram mengkilap.</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-amber-200 text-xs space-y-1">
+            <strong class="text-slate-800 block">2. Barcode & Nomor Seri</strong>
+            <span class="text-slate-600">Tercetak rapi di bagian bawah kemasan dan bisa di-scan.</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-amber-200 text-xs space-y-1">
+            <strong class="text-slate-800 block">3. Tekstur Bubuk Lembut</strong>
+            <span class="text-slate-600">Bubuk susu halus, tidak menggumpal keras, dan wangi gurih alami.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion FAQ -->
+      <div class="bg-[var(--card)] rounded-3xl p-6 sm:p-8 border border-[var(--border)] shadow-sm space-y-4">
+        <h3 class="text-lg font-bold text-slate-800">Pertanyaan yang Sering Diajukan (FAQ)</h3>
+        
+        <div class="space-y-3" id="faq-container">
+          <div class="border border-slate-200 rounded-2xl p-4 cursor-pointer" onclick="toggleFaq(1)">
+            <div class="flex justify-between items-center">
+              <h4 class="font-bold text-xs sm:text-sm text-slate-800">Apakah aman untuk anak yang alergi susu sapi?</h4>
+              <span id="faq-icon-1" class="text-sm font-bold text-emerald-600">+</span>
+            </div>
+            <p id="faq-ans-1" class="hidden text-xs text-slate-600 mt-2 leading-relaxed pt-2 border-t border-slate-100">
+              Sangat aman! GoMilku memiliki kadar alfa S1-kasein yang sangat rendah (zat utama pemicu alergi pada susu sapi), sehingga menjadi alternatif terbaik untuk anak alergi laktosa (usia 1 tahun ke atas).
+            </p>
+          </div>
+
+          <div class="border border-slate-200 rounded-2xl p-4 cursor-pointer" onclick="toggleFaq(2)">
+            <div class="flex justify-between items-center">
+              <h4 class="font-bold text-xs sm:text-sm text-slate-800">Bagaimana jika punya riwayat hipertensi (darah tinggi)?</h4>
+              <span id="faq-icon-2" class="text-sm font-bold text-emerald-600">+</span>
+            </div>
+            <p id="faq-ans-2" class="hidden text-xs text-slate-600 mt-2 leading-relaxed pt-2 border-t border-slate-100">
+              Justru sangat dianjurkan. Kalium dalam susu kambing etawa membantu melenturkan pembuluh darah dan membuang kelebihan natrium dari tubuh.
+            </p>
+          </div>
+
+          <div class="border border-slate-200 rounded-2xl p-4 cursor-pointer" onclick="toggleFaq(3)">
+            <div class="flex justify-between items-center">
+              <h4 class="font-bold text-xs sm:text-sm text-slate-800">Berapa lama masa simpan setelah kemasan dibuka?</h4>
+              <span id="faq-icon-3" class="text-sm font-bold text-emerald-600">+</span>
+            </div>
+            <p id="faq-ans-3" class="hidden text-xs text-slate-600 mt-2 leading-relaxed pt-2 border-t border-slate-100">
+              Disarankan dihabiskan dalam waktu 1 bulan setelah sachet kemasan dalam dibuka. Simpan di wadah rapat, kering, dan hindari paparan sinar matahari langsung.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Variant Card Image Switcher
+    function switchVariantImg(imgId, imgSrc, btnEl, activeRingClass) {
+      const img = document.getElementById(imgId);
+      if (img) {
+        img.style.opacity = '0';
+        img.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          img.src = imgSrc;
+          img.style.opacity = '1';
+          img.style.transform = 'scale(1)';
+        }, 150);
+      }
+
+      // Update ring state on sibling thumbnails
+      if (btnEl && btnEl.parentElement) {
+        const siblingButtons = btnEl.parentElement.querySelectorAll('button');
+        siblingButtons.forEach(btn => {
+          btn.classList.remove('ring-2', 'ring-emerald-500', 'ring-amber-500', 'ring-rose-500');
+        });
+        btnEl.classList.add('ring-2', activeRingClass || 'ring-emerald-500');
+      }
+    }
+
+    // Hero Product Image Switcher
+    function changeHeroImage(imgSrc, captionText, buttonEl) {
+      const mainImg = document.getElementById('main-product-img');
+      const caption = document.getElementById('main-product-caption');
+      
+      if (mainImg) {
+        mainImg.style.opacity = '0';
+        mainImg.style.transform = 'scale(0.95)';
+        
+        setTimeout(() => {
+          mainImg.src = imgSrc;
+          mainImg.alt = captionText;
+          mainImg.style.opacity = '1';
+          mainImg.style.transform = 'scale(1)';
+        }, 150);
+      }
+      
+      if (caption) {
+        caption.textContent = captionText;
+      }
+
+      // Update active ring on thumbnail buttons
+      const buttons = document.querySelectorAll('.thumb-btn');
+      buttons.forEach(b => {
+        b.classList.remove('ring-2', 'ring-emerald-400');
+      });
+      if (buttonEl) {
+        buttonEl.classList.add('ring-2', 'ring-emerald-400');
+      }
+    }
+
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      // Hide all contents
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(c => {
+        c.classList.remove('block');
+        c.classList.add('hidden');
+      });
+
+      // Show targeted content
+      const activeContent = document.getElementById('content-' + tabId);
+      if (activeContent) {
+        activeContent.classList.remove('hidden');
+        activeContent.classList.add('block');
+      }
+
+      // Update Nav Buttons Desktop
+      const navBtns = document.querySelectorAll('.nav-btn');
+      navBtns.forEach(btn => {
+        btn.classList.remove('active-tab');
+        btn.classList.add('text-slate-600');
+      });
+      const activeBtn = document.getElementById('tab-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('active-tab');
+        activeBtn.classList.remove('text-slate-600');
+      }
+
+      // Update Mobile Nav
+      const mobileBtns = document.querySelectorAll('.nav-btn-m');
+      mobileBtns.forEach((btn, idx) => {
+        const tabs = ['beranda', 'keunggulan', 'solusi', 'varian', 'keamanan'];
+        if (tabs[idx] === tabId) {
+          btn.classList.add('bg-emerald-600', 'text-white');
+          btn.classList.remove('bg-slate-100', 'text-slate-700');
+        } else {
+          btn.classList.remove('bg-emerald-600', 'text-white');
+          btn.classList.add('bg-slate-100', 'text-slate-700');
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Interactive Quiz Logic
+    function hitungRekomendasi() {
+      const target = document.getElementById('quiz-target').value;
+      const keluhan = document.getElementById('quiz-keluhan').value;
+      const resBox = document.getElementById('quiz-result');
+      const resRasa = document.getElementById('res-rasa');
+      const resTitle = document.getElementById('res-title');
+      const resDesc = document.getElementById('res-desc');
+      const resTakaran = document.getElementById('res-takaran');
+
+      let rasa = "Varian Original";
+      let title = "";
+      let desc = "";
+      let takaran = "2 sendok makan + 150ml air hangat (2x sehari)";
+
+      if (keluhan === 'lambung') {
+        rasa = "Varian Original (Paling Dianjurkan)";
+        title = "Terapi Ramah Lambung & Asam Lambung";
+        desc = "Susu kambing bersifat basa (alkali alami) yang cepat menetralkan cairan asam lambung tanpa memicu iritasi.";
+        takaran = "Minum saat perut kosong / 30 menit sebelum makan.";
+      } else if (keluhan === 'pernapasan') {
+        rasa = "Varian Original";
+        title = "Pelega Saluran Pernapasan & Paru-Paru";
+        desc = "Senyawa fluorine tinggi membantu membersihkan dahak dan menenangkan bronkus pada penderita asma/batuk.";
+        takaran = "Minum 1 gelas hangat di pagi hari & 1 gelas sebelum tidur.";
+      } else if (keluhan === 'nafsu_makan' || target === 'anak') {
+        rasa = "Varian Cokelat / Stroberi";
+        title = "Peningkat Nafsu Makan & Daya Tahan Anak";
+        desc = "Rasa manis gurih cokelat/stroberi alami yang nikmat, dilengkapi ekstrak daun kelor untuk vitamin harian balita.";
+        takaran = "1-2 sendok makan + 150ml air hangat (1-2x sehari).";
+      } else if (keluhan === 'asi' || target === 'bumil') {
+        rasa = "Varian Original / Stroberi";
+        title = "Booster Nutrisi ASI & Kalsium Ibu";
+        desc = "Ekstrak daun kelor membantu meningkatkan volume & kekentalan ASI, serta menyuplai kalsium pencegah keropos gigi/tulang ibu.";
+        takaran = "2 sendok makan + 200ml air hangat (2x sehari).";
+      } else if (keluhan === 'sendi') {
+        rasa = "Varian Original";
+        title = "Penguat Kepadatan Tulang & Sendi";
+        desc = "Kalsium & fosfor alami mudah diserap lansia untuk meredakan kaku persendian dan mencegah pengeroposan.";
+        takaran = "2 sendok makan + 150ml air hangat (2x sehari rutin).";
+      } else {
+        rasa = "Varian Original / Cokelat";
+        title = "Pemulihan Stamina & Imunitas Alami";
+        desc = "Ekstrak Ikan Gabus (Albumin) mempercepat regenerasi sel dan mengembalikan kebugaran tubuh.";
+        takaran = "2 sendok makan + 150ml air hangat di pagi hari.";
+      }
+
+      resRasa.textContent = rasa;
+      resTitle.textContent = title;
+      resDesc.textContent = desc;
+      resTakaran.textContent = takaran;
+
+      resBox.classList.remove('hidden');
+    }
+
+    function scrollToKuis() {
+      setTimeout(() => {
+        const el = document.getElementById('kuis');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
+    // Filter Solusi
+    function filterSolusi(category) {
+      const cards = document.querySelectorAll('.solusi-card');
+      const buttons = document.querySelectorAll('.solusi-filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+
+      // Highlight clicked button
+      event.target.classList.add('bg-emerald-600', 'text-white');
+      event.target.classList.remove('bg-white', 'text-slate-700');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-cat') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(num) {
+      const ans = document.getElementById('faq-ans-' + num);
+      const icon = document.getElementById('faq-icon-' + num);
+      if (ans.classList.contains('hidden')) {
+        ans.classList.remove('hidden');
+        icon.textContent = '−';
+      } else {
+        ans.classList.add('hidden');
+        icon.textContent = '+';
+      }
+    }
+
+    // Lightbox / Zoom Modal Logic
+    function openZoom(src) {
+      const modal = document.getElementById('zoom-modal');
+      const img = document.getElementById('zoom-img');
+      if (modal && img) {
+        img.src = src;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeZoom() {
+      const modal = document.getElementById('zoom-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeZoom();
+    });
+  </script>
+
+  <!-- LIGHTBOX / ZOOM MODAL POPUP -->
+  <div id="zoom-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6" onclick="closeZoom()">
+    <div class="relative max-w-5xl max-h-[92vh] w-full flex flex-col items-center" onclick="event.stopPropagation()">
+      <div class="w-full flex items-center justify-between text-white pb-3 px-1">
+        <span class="text-xs font-semibold text-emerald-300">Tampilan Penuh Infografis (High-Res)</span>
+        <button onclick="closeZoom()" class="bg-white/20 hover:bg-white/30 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[85vh] w-full flex justify-center bg-black/40 rounded-2xl p-2 border border-white/10">
+        <img id="zoom-img" src="" alt="Infografis Full View" class="max-w-full h-auto object-contain rounded-xl" />
+      </div>
+    </div>
+  </div>
+  <!-- FLOATING WHATSAPP BUTTON (POJOK KANAN BAWAH) -->
+  <a href="https://wa.me/6281334541949?text=Halo%20Admin%20GoMilku,%20saya%20ingin%20konsultasi%20dan%20order%20GoMilku" 
+     target="_blank" 
+     class="fixed bottom-5 right-5 z-40 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 hover:scale-105 transition-all duration-300 border-2 border-white/50 group"
+     title="Chat WhatsApp Resmi (081295474607)">
+    <span class="text-xl">💬</span>
+    <span class="text-xs font-bold hidden sm:inline">WhatsApp: 0812-9547-4607</span>
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-ping"></span>
+  </a>
+
+</body>
+</html>
